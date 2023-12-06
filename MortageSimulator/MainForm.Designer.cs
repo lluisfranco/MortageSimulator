@@ -36,6 +36,9 @@
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            colPendingCapital = new DevExpress.XtraGrid.Columns.GridColumn();
+            colInterests = new DevExpress.XtraGrid.Columns.GridColumn();
+            colAmortizedCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItemParseOriginal = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -46,15 +49,36 @@
             colId = new DevExpress.XtraGrid.Columns.GridColumn();
             colDate = new DevExpress.XtraGrid.Columns.GridColumn();
             colTypeOfInterest = new DevExpress.XtraGrid.Columns.GridColumn();
-            colAmortizedCapital = new DevExpress.XtraGrid.Columns.GridColumn();
-            colInterests = new DevExpress.XtraGrid.Columns.GridColumn();
             colFeeToPay = new DevExpress.XtraGrid.Columns.GridColumn();
-            colPendingCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView).BeginInit();
             SuspendLayout();
+            // 
+            // colPendingCapital
+            // 
+            colPendingCapital.FieldName = "PendingCapital";
+            colPendingCapital.Name = "colPendingCapital";
+            colPendingCapital.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "PendingCapital", "{0}") });
+            colPendingCapital.Visible = true;
+            colPendingCapital.VisibleIndex = 6;
+            // 
+            // colInterests
+            // 
+            colInterests.FieldName = "Interests";
+            colInterests.Name = "colInterests";
+            colInterests.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Interests", "{0:n2}") });
+            colInterests.Visible = true;
+            colInterests.VisibleIndex = 4;
+            // 
+            // colAmortizedCapital
+            // 
+            colAmortizedCapital.FieldName = "AmortizedCapital";
+            colAmortizedCapital.Name = "colAmortizedCapital";
+            colAmortizedCapital.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AmortizedCapital", "{0:n2}") });
+            colAmortizedCapital.Visible = true;
+            colAmortizedCapital.VisibleIndex = 3;
             // 
             // ribbon
             // 
@@ -145,33 +169,12 @@
             colTypeOfInterest.Visible = true;
             colTypeOfInterest.VisibleIndex = 2;
             // 
-            // colAmortizedCapital
-            // 
-            colAmortizedCapital.FieldName = "AmortizedCapital";
-            colAmortizedCapital.Name = "colAmortizedCapital";
-            colAmortizedCapital.Visible = true;
-            colAmortizedCapital.VisibleIndex = 3;
-            // 
-            // colInterests
-            // 
-            colInterests.FieldName = "Interests";
-            colInterests.Name = "colInterests";
-            colInterests.Visible = true;
-            colInterests.VisibleIndex = 4;
-            // 
             // colFeeToPay
             // 
             colFeeToPay.FieldName = "FeeToPay";
             colFeeToPay.Name = "colFeeToPay";
             colFeeToPay.Visible = true;
             colFeeToPay.VisibleIndex = 5;
-            // 
-            // colPendingCapital
-            // 
-            colPendingCapital.FieldName = "PendingCapital";
-            colPendingCapital.Name = "colPendingCapital";
-            colPendingCapital.Visible = true;
-            colPendingCapital.VisibleIndex = 6;
             // 
             // MainForm
             // 
