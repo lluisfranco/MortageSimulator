@@ -16,6 +16,12 @@ namespace MortageSimulator
         [Description("Calculation Type")]
         public CalculationTypeEnum CalculationType { get; set; }
 
+        [Description("Euribor 12M Rate")]
+        public double Euribor12MRate { get; set; }
+
+        [Description("Differential Rate")]
+        public double DifferentialRate { get; set; }
+
         [Description("Type Of Interest")]
         public double TypeOfInterest { get; set; }
 

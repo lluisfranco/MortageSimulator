@@ -119,7 +119,7 @@
             // textEditTypeOfInterest
             // 
             textEditTypeOfInterest.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "TypeOfInterest", true));
-            textEditTypeOfInterest.Location = new Point(24, 197);
+            textEditTypeOfInterest.Location = new Point(24, 159);
             textEditTypeOfInterest.Name = "textEditTypeOfInterest";
             textEditTypeOfInterest.Properties.AdvancedModeOptions.Label = "Type Of Interest (Euribor + Diff)";
             textEditTypeOfInterest.Properties.Mask.UseMaskAsDisplayFormat = true;
@@ -177,11 +177,11 @@
             // CalculationTypeImageComboBoxEdit
             // 
             CalculationTypeImageComboBoxEdit.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "CalculationType", true));
-            CalculationTypeImageComboBoxEdit.Location = new Point(24, 159);
+            CalculationTypeImageComboBoxEdit.Location = new Point(24, 197);
             CalculationTypeImageComboBoxEdit.Name = "CalculationTypeImageComboBoxEdit";
             CalculationTypeImageComboBoxEdit.Properties.AdvancedModeOptions.Label = "Calculation Type";
             CalculationTypeImageComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            CalculationTypeImageComboBoxEdit.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] { new DevExpress.XtraEditors.Controls.ImageComboBoxItem("UseFixedInterestRate", CalculationTypeEnum.UseFixedInterestRate, 0), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("UseSuperHipotecaMixta", CalculationTypeEnum.UseSuperHipotecaMixta, 1) });
+            CalculationTypeImageComboBoxEdit.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] { new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Use Fixed Interest Rate", CalculationTypeEnum.UseFixedInterestRate, 0), new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Use Super Hipoteca Mixta", CalculationTypeEnum.UseSuperHipotecaMixta, 1) });
             CalculationTypeImageComboBoxEdit.Properties.UseAdvancedMode = DevExpress.Utils.DefaultBoolean.True;
             CalculationTypeImageComboBoxEdit.Properties.UseCtrlScroll = true;
             CalculationTypeImageComboBoxEdit.Size = new Size(386, 34);
@@ -229,7 +229,7 @@
             // 
             // layoutControlGroup2
             // 
-            layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { emptySpaceItem1, ItemForInitialCapital, ItemForFirstPeriodDate, ItemForNumberOfPeriods, ItemForCalculationType, ItemForSuperHipotecaMixta1YearTypeOfInterest, ItemForSuperHipotecaMixta2To5YearTypeOfInterest, layoutControlItem1, layoutControlItem3 });
+            layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { emptySpaceItem1, ItemForInitialCapital, ItemForFirstPeriodDate, ItemForNumberOfPeriods, ItemForCalculationType, ItemForSuperHipotecaMixta1YearTypeOfInterest, ItemForSuperHipotecaMixta2To5YearTypeOfInterest, layoutControlItem3, layoutControlItem1 });
             layoutControlGroup2.Location = new Point(0, 0);
             layoutControlGroup2.Name = "layoutControlGroup2";
             layoutControlGroup2.Size = new Size(414, 412);
@@ -276,7 +276,7 @@
             // ItemForCalculationType
             // 
             ItemForCalculationType.Control = CalculationTypeImageComboBoxEdit;
-            ItemForCalculationType.Location = new Point(0, 114);
+            ItemForCalculationType.Location = new Point(0, 152);
             ItemForCalculationType.Name = "ItemForCalculationType";
             ItemForCalculationType.Size = new Size(390, 38);
             ItemForCalculationType.Text = "Calculation Type";
@@ -306,7 +306,7 @@
             // layoutControlItem1
             // 
             layoutControlItem1.Control = textEditTypeOfInterest;
-            layoutControlItem1.Location = new Point(0, 152);
+            layoutControlItem1.Location = new Point(0, 114);
             layoutControlItem1.Name = "layoutControlItem1";
             layoutControlItem1.Size = new Size(390, 38);
             layoutControlItem1.TextSize = new Size(0, 0);
