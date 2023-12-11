@@ -24,6 +24,9 @@ namespace MortageSimulator
 
         [Description("Super Hipoteca Mixta 2nd To 5th Year Type Of Interest")]
         public double SuperHipotecaMixta2To5YearTypeOfInterest { get; set; }
+
+        [Description("Super Hipoteca Mixta After 5th Year Type Of Interest")]
+        public double SuperHipotecaMixtaAfter5YearTypeOfInterest => TypeOfInterest - 0.5;
     }
 
     public enum CalculationTypeEnum

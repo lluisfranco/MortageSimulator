@@ -36,7 +36,7 @@
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
-            MortageOptions mortageOptions3 = new MortageOptions();
+            MortageOptions mortageOptions1 = new MortageOptions();
             colPendingCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             colInterests = new DevExpress.XtraGrid.Columns.GridColumn();
             colAmortizedCapital = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -155,11 +155,11 @@
             // 
             gridControl.DataSource = bindingSource;
             gridControl.Dock = DockStyle.Fill;
-            gridControl.Location = new Point(250, 158);
+            gridControl.Location = new Point(325, 158);
             gridControl.MainView = gridView;
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new Size(862, 561);
+            gridControl.Size = new Size(787, 561);
             gridControl.TabIndex = 3;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
             // 
@@ -208,7 +208,8 @@
             // 
             // colTypeOfInterest
             // 
-            colTypeOfInterest.DisplayFormat.FormatString = "P2";
+            colTypeOfInterest.Caption = "Type Of Interest (%)";
+            colTypeOfInterest.DisplayFormat.FormatString = "n2";
             colTypeOfInterest.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colTypeOfInterest.FieldName = "TypeOfInterest";
             colTypeOfInterest.Name = "colTypeOfInterest";
@@ -246,8 +247,8 @@
             dockPanel1.ID = new Guid("567f80b2-92d7-467a-8caf-207bde63914e");
             dockPanel1.Location = new Point(0, 158);
             dockPanel1.Name = "dockPanel1";
-            dockPanel1.OriginalSize = new Size(250, 200);
-            dockPanel1.Size = new Size(250, 561);
+            dockPanel1.OriginalSize = new Size(325, 200);
+            dockPanel1.Size = new Size(325, 561);
             dockPanel1.Text = "Mortage Options";
             // 
             // dockPanel1_Container
@@ -255,23 +256,23 @@
             dockPanel1_Container.Controls.Add(mortageOptionsUserControl);
             dockPanel1_Container.Location = new Point(3, 26);
             dockPanel1_Container.Name = "dockPanel1_Container";
-            dockPanel1_Container.Size = new Size(243, 532);
+            dockPanel1_Container.Size = new Size(318, 532);
             dockPanel1_Container.TabIndex = 0;
             // 
             // mortageOptionsUserControl
             // 
             mortageOptionsUserControl.Dock = DockStyle.Fill;
             mortageOptionsUserControl.Location = new Point(0, 0);
-            mortageOptions3.CalculationType = CalculationTypeEnum.UseFixedInterestRate;
-            mortageOptions3.FirstPeriodDate = new DateTime(0L);
-            mortageOptions3.InitialCapital = 0D;
-            mortageOptions3.NumberOfPeriods = 0;
-            mortageOptions3.SuperHipotecaMixta1YearTypeOfInterest = 0D;
-            mortageOptions3.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
-            mortageOptions3.TypeOfInterest = 0D;
-            mortageOptionsUserControl.MortageOptions = mortageOptions3;
+            mortageOptions1.CalculationType = CalculationTypeEnum.UseFixedInterestRate;
+            mortageOptions1.FirstPeriodDate = new DateTime(0L);
+            mortageOptions1.InitialCapital = 0D;
+            mortageOptions1.NumberOfPeriods = 0;
+            mortageOptions1.SuperHipotecaMixta1YearTypeOfInterest = 0D;
+            mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
+            mortageOptions1.TypeOfInterest = 0D;
+            mortageOptionsUserControl.MortageOptions = mortageOptions1;
             mortageOptionsUserControl.Name = "mortageOptionsUserControl";
-            mortageOptionsUserControl.Size = new Size(243, 532);
+            mortageOptionsUserControl.Size = new Size(318, 532);
             mortageOptionsUserControl.TabIndex = 0;
             // 
             // MainForm
@@ -286,6 +287,7 @@
             Name = "MainForm";
             Ribbon = ribbon;
             Text = "Mortage Simulator";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)ribbon).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
