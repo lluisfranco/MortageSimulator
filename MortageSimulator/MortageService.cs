@@ -13,92 +13,92 @@
         {
             IList<MortagePeriod> periods = new List<MortagePeriod>(); 
             if (Options.CalculationType == CalculationTypeEnum.UseFixedInterestRate) 
-                periods = CalculateUsingFixedInterestRate();
+                periods = CalculateFromPeriods(Options.GetPeriods()); //CalculateUsingFixedInterestRate();
             if (Options.CalculationType == CalculationTypeEnum.UseSuperHipotecaMixta)
-                periods = CalculateFromPeriods();// CalculateUsingSuperHipotecaMitxa();
+                periods = CalculateFromPeriods(Options.GetPeriods());// CalculateUsingSuperHipotecaMitxa();
             if (Options.CalculationType == CalculationTypeEnum.UseCustomPeriods)
-                periods = CalculateFromPeriods();
+                periods = CalculateFromPeriods(Options.CustomPeriods);
             return periods;
         }
 
-        private IList<MortagePeriod> CalculateUsingFixedInterestRate()
-        {
-            var periodId = 1;
-            var currentPeriodDate = Options.FirstPeriodDate;
-            var periods = new List<MortagePeriod>();
-            for (int i = 0; i < Options.NumberOfPeriods; i++)
-            {
-                var period = new MortagePeriod();
-                period.Id = periodId;
-                period.Date = currentPeriodDate;
-                if (periodId == 1)
-                    period.InitialCapital = Options.InitialCapital;
-                else
-                    period.InitialCapital = periods[i - 1].PendingCapital;
-                period.TypeOfInterest = Options.TypeOfInterest;
-                period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods, Options.InitialCapital);
-                period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
-                period.AmortizedCapital = period.FeeToPay - period.Interests;
-                period.PendingCapital = period.InitialCapital - period.AmortizedCapital;
+        //private IList<MortagePeriod> CalculateUsingFixedInterestRate()
+        //{
+        //    var periodId = 1;
+        //    var currentPeriodDate = Options.FirstPeriodDate;
+        //    var periods = new List<MortagePeriod>();
+        //    for (int i = 0; i < Options.NumberOfPeriods; i++)
+        //    {
+        //        var period = new MortagePeriod();
+        //        period.Id = periodId;
+        //        period.Date = currentPeriodDate;
+        //        if (periodId == 1)
+        //            period.InitialCapital = Options.InitialCapital;
+        //        else
+        //            period.InitialCapital = periods[i - 1].PendingCapital;
+        //        period.TypeOfInterest = Options.TypeOfInterest;
+        //        period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods, Options.InitialCapital);
+        //        period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
+        //        period.AmortizedCapital = period.FeeToPay - period.Interests;
+        //        period.PendingCapital = period.InitialCapital - period.AmortizedCapital;
 
-                periods.Add(period);
-                periodId++;
-                currentPeriodDate = currentPeriodDate.AddMonths(1);
-            }
-            return periods;
-        }
+        //        periods.Add(period);
+        //        periodId++;
+        //        currentPeriodDate = currentPeriodDate.AddMonths(1);
+        //    }
+        //    return periods;
+        //}
 
-        bool IsPeriodInFirstYear(int periodId) => periodId <= 12;
-        bool IsPeriodBetween2And5Years(int periodId) => periodId > 12 && periodId <= 60;
-        bool IsPeriodAfter5Year(int periodId) => periodId > 60;
-        bool IsFirstPeriodOfFirstYear(int periodId) => periodId == 1;
-        bool IsFirstPeriodOfSecondToFiftyhYear(int periodId) => periodId == 13;
-        bool IsFirstPeriodOfAfterFiftyhYear(int periodId) => periodId == 61;
-        private IList<MortagePeriod> CalculateUsingSuperHipotecaMitxa()
-        {
-            var periodId = 1;
-            var currentPeriodDate = Options.FirstPeriodDate;
-            var periods = new List<MortagePeriod>();
-            for (int i = 0; i < Options.NumberOfPeriods; i++)
-            {
-                var period = new MortagePeriod();
-                period.Id = periodId;
-                period.Date = currentPeriodDate;
-                if (IsPeriodInFirstYear(periodId))
-                {
-                    if (IsFirstPeriodOfFirstYear(periodId))
-                        period.InitialCapital = Options.InitialCapital;
-                    else
-                        period.InitialCapital = periods[i - 1].PendingCapital;
-                    period.TypeOfInterest = Options.SuperHipotecaMixta1YearTypeOfInterest;
-                    period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods, Options.InitialCapital);
-                    period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
-                }
-                if (IsPeriodBetween2And5Years(periodId))
-                {
-                    period.InitialCapital = periods[i - 1].PendingCapital;
-                    period.TypeOfInterest = Options.SuperHipotecaMixta2To5YearTypeOfInterest;
-                    period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods - 12, periods[11].PendingCapital);
-                    period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
-                }
-                if (IsPeriodAfter5Year(periodId))
-                {
-                    period.InitialCapital = periods[i - 1].PendingCapital;
-                    period.TypeOfInterest = Options.SuperHipotecaMixtaAfter5YearTypeOfInterest;
-                    period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods - 60, periods[59].PendingCapital);
-                    period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
-                }
-                period.AmortizedCapital = period.FeeToPay - period.Interests;
-                period.PendingCapital = period.InitialCapital - period.AmortizedCapital;
+        //bool IsPeriodInFirstYear(int periodId) => periodId <= 12;
+        //bool IsPeriodBetween2And5Years(int periodId) => periodId > 12 && periodId <= 60;
+        //bool IsPeriodAfter5Year(int periodId) => periodId > 60;
+        //bool IsFirstPeriodOfFirstYear(int periodId) => periodId == 1;
+        //bool IsFirstPeriodOfSecondToFiftyhYear(int periodId) => periodId == 13;
+        //bool IsFirstPeriodOfAfterFiftyhYear(int periodId) => periodId == 61;
+        //private IList<MortagePeriod> CalculateUsingSuperHipotecaMitxa()
+        //{
+        //    var periodId = 1;
+        //    var currentPeriodDate = Options.FirstPeriodDate;
+        //    var periods = new List<MortagePeriod>();
+        //    for (int i = 0; i < Options.NumberOfPeriods; i++)
+        //    {
+        //        var period = new MortagePeriod();
+        //        period.Id = periodId;
+        //        period.Date = currentPeriodDate;
+        //        if (IsPeriodInFirstYear(periodId))
+        //        {
+        //            if (IsFirstPeriodOfFirstYear(periodId))
+        //                period.InitialCapital = Options.InitialCapital;
+        //            else
+        //                period.InitialCapital = periods[i - 1].PendingCapital;
+        //            period.TypeOfInterest = Options.SuperHipotecaMixta1YearTypeOfInterest;
+        //            period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods, Options.InitialCapital);
+        //            period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
+        //        }
+        //        if (IsPeriodBetween2And5Years(periodId))
+        //        {
+        //            period.InitialCapital = periods[i - 1].PendingCapital;
+        //            period.TypeOfInterest = Options.SuperHipotecaMixta2To5YearTypeOfInterest;
+        //            period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods - 12, periods[11].PendingCapital);
+        //            period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
+        //        }
+        //        if (IsPeriodAfter5Year(periodId))
+        //        {
+        //            period.InitialCapital = periods[i - 1].PendingCapital;
+        //            period.TypeOfInterest = Options.SuperHipotecaMixtaAfter5YearTypeOfInterest;
+        //            period.FeeToPay = PMT((double)period.TypeOfInterest, Options.NumberOfPeriods - 60, periods[59].PendingCapital);
+        //            period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
+        //        }
+        //        period.AmortizedCapital = period.FeeToPay - period.Interests;
+        //        period.PendingCapital = period.InitialCapital - period.AmortizedCapital;
 
-                periods.Add(period);
-                periodId++;
-                currentPeriodDate = currentPeriodDate.AddMonths(1);
-            }
-            return periods;
-        }
+        //        periods.Add(period);
+        //        periodId++;
+        //        currentPeriodDate = currentPeriodDate.AddMonths(1);
+        //    }
+        //    return periods;
+        //}
 
-        public IList<MortagePeriod> CalculateFromPeriods()
+        public IList<MortagePeriod> CalculateFromPeriods(IList<MortageCustomPeriod> customPeriods)
         {
             var currentPeriodDate = Options.FirstPeriodDate;
             int index = 0;
@@ -106,24 +106,24 @@
             double periodInitialCapital = Options.InitialCapital;
             var periodId = 1;
             var periods = new List<MortagePeriod>();
-            foreach (var customPeriod in Options.GetPeriods())
+            foreach (var customPeriod in customPeriods)
             {
                 bool isFirstPeriod = index == 0;
                 for (int i = 0; i < customPeriod.NumberOfPeriods; i++)
                 {
                     bool isFirstDateInPeriod = i == 0;
                     if (isFirstDateInPeriod && !isFirstPeriod)
+                        periodInitialCapital = periods[totalNumberOfPeriods - 1].PendingCapital;
+                    var period = new MortagePeriod
                     {
-                        periodInitialCapital = periods[periodId - 1 - 1].PendingCapital;
-                    }
-                    var period = new MortagePeriod();
-                    period.Id = periodId;
-                    period.Date = currentPeriodDate;
-                    if (!isFirstDateInPeriod) 
-                        period.InitialCapital = periods[periodId - 1 - 1].PendingCapital;
+                        Id = periodId,
+                        Date = currentPeriodDate,
+                        TypeOfInterest = customPeriod.TypeOfInterest
+                    };
+                    if (!isFirstDateInPeriod)
+                        period.InitialCapital = periods[periodId - 2].PendingCapital;
                     else
                         period.InitialCapital = periodInitialCapital;
-                    period.TypeOfInterest = customPeriod.TypeOfInterest;
                     period.FeeToPay = PMT(
                         (double)period.TypeOfInterest, 
                         Options.NumberOfPeriods - totalNumberOfPeriods,

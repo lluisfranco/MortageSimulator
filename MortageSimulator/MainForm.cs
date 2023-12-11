@@ -47,6 +47,7 @@ namespace MortageSimulator
             barButtonItemExportToExcel.ItemClick += (s, e) =>
             {
                 var file = Path.GetTempFileName().Replace("tmp", "xlsx");
+                if (gridView.RowCount == 0) return;
                 gridView.ExportToXlsx(file);
                 var p = new Process
                 {

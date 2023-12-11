@@ -27,7 +27,7 @@
             {
                 SuperHipotecaMixta1YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
                 SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
-                gridViewPeriods.OptionsBehavior.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex != 2;
+                layoutControlGroupCustomPeriods.CustomHeaderButtons[0].Properties.Enabled = CalculationTypeImageComboBoxEdit.SelectedIndex == 2;
                 MortageOptions.CalculationType = (CalculationTypeEnum)CalculationTypeImageComboBoxEdit.SelectedIndex;
                 mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
             };

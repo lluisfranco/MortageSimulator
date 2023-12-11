@@ -160,7 +160,7 @@
             gridControl.MainView = gridView;
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new Size(787, 561);
+            gridControl.Size = new Size(787, 682);
             gridControl.TabIndex = 3;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
             // 
@@ -223,6 +223,7 @@
             colFeeToPay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colFeeToPay.FieldName = "FeeToPay";
             colFeeToPay.Name = "colFeeToPay";
+            colFeeToPay.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "FeeToPay", "{0:n2}") });
             colFeeToPay.Visible = true;
             colFeeToPay.VisibleIndex = 6;
             // 
@@ -249,7 +250,7 @@
             dockPanel1.Location = new Point(0, 158);
             dockPanel1.Name = "dockPanel1";
             dockPanel1.OriginalSize = new Size(325, 200);
-            dockPanel1.Size = new Size(325, 561);
+            dockPanel1.Size = new Size(325, 682);
             dockPanel1.Text = "Mortage Options";
             // 
             // dockPanel1_Container
@@ -257,7 +258,7 @@
             dockPanel1_Container.Controls.Add(mortageOptionsUserControl);
             dockPanel1_Container.Location = new Point(3, 26);
             dockPanel1_Container.Name = "dockPanel1_Container";
-            dockPanel1_Container.Size = new Size(318, 532);
+            dockPanel1_Container.Size = new Size(318, 653);
             dockPanel1_Container.TabIndex = 0;
             // 
             // mortageOptionsUserControl
@@ -274,14 +275,14 @@
             mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
             mortageOptionsUserControl.MortageOptions = mortageOptions1;
             mortageOptionsUserControl.Name = "mortageOptionsUserControl";
-            mortageOptionsUserControl.Size = new Size(318, 532);
+            mortageOptionsUserControl.Size = new Size(318, 653);
             mortageOptionsUserControl.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1112, 719);
+            ClientSize = new Size(1112, 840);
             Controls.Add(gridControl);
             Controls.Add(dockPanel1);
             Controls.Add(ribbon);
