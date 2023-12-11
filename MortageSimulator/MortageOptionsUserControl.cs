@@ -28,6 +28,19 @@
                 SuperHipotecaMixta1YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
                 SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
                 gridViewPeriods.OptionsBehavior.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex != 2;
+                MortageOptions.CalculationType = (CalculationTypeEnum)CalculationTypeImageComboBoxEdit.SelectedIndex;
+                mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
+            };
+            NumberOfPeriodsTextEdit.EditValueChanged += (s, e) =>
+            {
+                mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
+            };
+            textEditEuribor12M.EditValueChanged += (s, e) =>
+            {
+                mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
+            };
+            textEditDifferentialRate.EditValueChanged += (s, e) =>
+            {
                 mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
             };
         }

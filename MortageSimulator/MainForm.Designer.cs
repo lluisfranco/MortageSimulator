@@ -120,6 +120,7 @@
             barButtonItemCalculate.Caption = "Calculate";
             barButtonItemCalculate.Id = 2;
             barButtonItemCalculate.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemCalculate.ImageOptions.SvgImage");
+            barButtonItemCalculate.ItemShortcut = new DevExpress.XtraBars.BarShortcut(Keys.F5);
             barButtonItemCalculate.Name = "barButtonItemCalculate";
             // 
             // barButtonItemParseFile
@@ -264,6 +265,8 @@
             mortageOptionsUserControl.Dock = DockStyle.Fill;
             mortageOptionsUserControl.Location = new Point(0, 0);
             mortageOptions1.CalculationType = CalculationTypeEnum.UseFixedInterestRate;
+            mortageOptions1.DifferentialRate = 0D;
+            mortageOptions1.Euribor12MRate = 0D;
             mortageOptions1.FirstPeriodDate = new DateTime(0L);
             mortageOptions1.InitialCapital = 0D;
             mortageOptions1.NumberOfPeriods = 0;

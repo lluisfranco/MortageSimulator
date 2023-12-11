@@ -15,7 +15,9 @@
             if (Options.CalculationType == CalculationTypeEnum.UseFixedInterestRate) 
                 periods = CalculateUsingFixedInterestRate();
             if (Options.CalculationType == CalculationTypeEnum.UseSuperHipotecaMixta)
-                periods = CalculateUsingSuperHipotecaMitxa();
+                periods = CalculateFromPeriods();// CalculateUsingSuperHipotecaMitxa();
+            if (Options.CalculationType == CalculationTypeEnum.UseCustomPeriods)
+                periods = CalculateFromPeriods();
             return periods;
         }
 
@@ -92,6 +94,49 @@
                 periods.Add(period);
                 periodId++;
                 currentPeriodDate = currentPeriodDate.AddMonths(1);
+            }
+            return periods;
+        }
+
+        public IList<MortagePeriod> CalculateFromPeriods()
+        {
+            var currentPeriodDate = Options.FirstPeriodDate;
+            int index = 0;
+            int totalNumberOfPeriods = 0;
+            double periodInitialCapital = Options.InitialCapital;
+            var periodId = 1;
+            var periods = new List<MortagePeriod>();
+            foreach (var customPeriod in Options.GetPeriods())
+            {
+                bool isFirstPeriod = index == 0;
+                for (int i = 0; i < customPeriod.NumberOfPeriods; i++)
+                {
+                    bool isFirstDateInPeriod = i == 0;
+                    if (isFirstDateInPeriod && !isFirstPeriod)
+                    {
+                        periodInitialCapital = periods[periodId - 1 - 1].PendingCapital;
+                    }
+                    var period = new MortagePeriod();
+                    period.Id = periodId;
+                    period.Date = currentPeriodDate;
+                    if (!isFirstDateInPeriod) 
+                        period.InitialCapital = periods[periodId - 1 - 1].PendingCapital;
+                    else
+                        period.InitialCapital = periodInitialCapital;
+                    period.TypeOfInterest = customPeriod.TypeOfInterest;
+                    period.FeeToPay = PMT(
+                        (double)period.TypeOfInterest, 
+                        Options.NumberOfPeriods - totalNumberOfPeriods,
+                        periodInitialCapital);
+                    period.Interests = period.InitialCapital * ((double)period.TypeOfInterest / 100 / 12);
+                    period.AmortizedCapital = period.FeeToPay - period.Interests;
+                    period.PendingCapital = period.InitialCapital - period.AmortizedCapital;
+                    periods.Add(period);
+                    periodId++;
+                    currentPeriodDate = currentPeriodDate.AddMonths(1);
+                }
+                totalNumberOfPeriods += customPeriod.NumberOfPeriods; 
+                index++;
             }
             return periods;
         }
