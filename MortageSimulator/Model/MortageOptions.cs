@@ -50,7 +50,8 @@ namespace MortageSimulator
                 customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = 48, TypeOfInterest = SuperHipotecaMixta2To5YearTypeOfInterest });
                 customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = NumberOfPeriods - 60, TypeOfInterest = SuperHipotecaMixtaAfter5YearTypeOfInterest });
             }
-            customperiods.AddRange(CustomPeriods);
+            if (CalculationType == CalculationTypeEnum.UseCustomPeriods)
+                customperiods.AddRange(CustomPeriods);
             return customperiods;
         }
 

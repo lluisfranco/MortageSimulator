@@ -21,6 +21,8 @@ namespace MortageSimulator
                     DifferentialRate = 1,
                     CalculationType = CalculationTypeEnum.UseFixedInterestRate,
                 };
+                MortageOptions.CustomPeriods.Add(new MortageCustomPeriod() { NumberOfPeriods = 12, TypeOfInterest = 5.21 });
+                MortageOptions.CustomPeriods.Add(new MortageCustomPeriod() { NumberOfPeriods = 135, TypeOfInterest = 2 });
                 mortageOptionsUserControl.MortageOptions = MortageOptions;
             };
             barButtonItemParseDefaultFile.ItemClick += (s, e) =>
