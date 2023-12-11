@@ -18,11 +18,8 @@ namespace MortageSimulator
                     InitialCapital = 246574.64,
                     NumberOfPeriods = 147,
                     Euribor12MRate = 4.21,
-                    DifferentialRate = 1, 
-                    //TypeOfInterest = 5.21,
+                    DifferentialRate = 1,
                     CalculationType = CalculationTypeEnum.UseFixedInterestRate,
-                    SuperHipotecaMixta1YearTypeOfInterest = 1.75,
-                    SuperHipotecaMixta2To5YearTypeOfInterest = 2.75
                 };
                 mortageOptionsUserControl.MortageOptions = MortageOptions;
             };

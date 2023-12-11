@@ -11,18 +11,24 @@
             }
             set
             {
-                if (value != null) mortageOptionsBindingSource.DataSource = value;
+                if (value != null)
+                {
+                    mortageOptionsBindingSource.DataSource = value;
+                    mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
+                }
             }
         }
 
         public MortageOptionsUserControl()
         {
             InitializeComponent();
+            CalculationTypeImageComboBoxEdit.Properties.AddEnum(typeof(CalculationTypeEnum));
             CalculationTypeImageComboBoxEdit.EditValueChanged += (s, e) =>
             {
                 SuperHipotecaMixta1YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
                 SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
-                //SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex == 0;
+                gridViewPeriods.OptionsBehavior.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex != 2;
+                mortageCustomPeriodBindingSource.DataSource = MortageOptions?.GetPeriods();
             };
         }
     }

@@ -96,6 +96,23 @@
             return periods;
         }
 
+        //public IList<MortageCustomPeriod> GetPeriods()
+        //{
+        //    var customperiods = new List<MortageCustomPeriod>();
+        //    if (Options.CalculationType == CalculationTypeEnum.UseFixedInterestRate)
+        //    {
+        //        customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = Options.NumberOfPeriods, TypeOfInterest = Options.TypeOfInterest });
+        //    }
+        //    if (Options.CalculationType == CalculationTypeEnum.UseSuperHipotecaMixta)
+        //    {
+        //        customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = 12, TypeOfInterest = Options.SuperHipotecaMixta1YearTypeOfInterest });
+        //        customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = 48, TypeOfInterest = Options.SuperHipotecaMixta2To5YearTypeOfInterest });
+        //        customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = Options.NumberOfPeriods - 60, TypeOfInterest = Options.SuperHipotecaMixtaAfter5YearTypeOfInterest });
+        //    }
+        //    customperiods.AddRange(Options.CustomPeriods);
+        //    return customperiods;
+        //}
+
         public static double PMT(double yearlyInterestRate, int totalNumberOfMonths, double loanAmount)
         {
             var rate = (double)yearlyInterestRate / 100 / 12;
