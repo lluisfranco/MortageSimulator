@@ -17,7 +17,9 @@ namespace MortageSimulator
                     FirstPeriodDate = new DateTime(2024, 1, 5),
                     InitialCapital = 246574.64,
                     NumberOfPeriods = 147,
-                    TypeOfInterest = 5.21,
+                    Euribor12MRate = 4.21,
+                    DifferentialRate = 1, 
+                    //TypeOfInterest = 5.21,
                     CalculationType = CalculationTypeEnum.UseFixedInterestRate,
                     SuperHipotecaMixta1YearTypeOfInterest = 1.75,
                     SuperHipotecaMixta2To5YearTypeOfInterest = 2.75

@@ -269,7 +269,6 @@
             mortageOptions1.NumberOfPeriods = 0;
             mortageOptions1.SuperHipotecaMixta1YearTypeOfInterest = 0D;
             mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
-            mortageOptions1.TypeOfInterest = 0D;
             mortageOptionsUserControl.MortageOptions = mortageOptions1;
             mortageOptionsUserControl.Name = "mortageOptionsUserControl";
             mortageOptionsUserControl.Size = new Size(318, 532);

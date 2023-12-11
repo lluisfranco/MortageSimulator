@@ -23,7 +23,7 @@ namespace MortageSimulator
         public double DifferentialRate { get; set; }
 
         [Description("Type Of Interest")]
-        public double TypeOfInterest { get; set; }
+        public double TypeOfInterest => Euribor12MRate + DifferentialRate;
 
         [Description("Super Hipoteca Mixta 1st Year Type Of Interest")]
         public double SuperHipotecaMixta1YearTypeOfInterest { get; set; }
@@ -32,7 +32,7 @@ namespace MortageSimulator
         public double SuperHipotecaMixta2To5YearTypeOfInterest { get; set; }
 
         [Description("Super Hipoteca Mixta After 5th Year Type Of Interest")]
-        public double SuperHipotecaMixtaAfter5YearTypeOfInterest => TypeOfInterest - 0.5;
+        public double SuperHipotecaMixtaAfter5YearTypeOfInterest => Euribor12MRate + 0.5;
     }
 
     public enum CalculationTypeEnum
