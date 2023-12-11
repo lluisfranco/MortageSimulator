@@ -42,21 +42,24 @@ namespace MortageSimulator
             var periods = new List<MortagePeriod>();
             foreach (var item in originalperiods)
             {
-                var period = new MortagePeriod();
-                period.Id = item.Id;
-                period.Date = Convert.ToDateTime(item.Date);
-                period.TypeOfInterest = RemoveSymbol(item.TypeOfInterest, "%") / 100;
-                period.AmortizedCapital = RemoveSymbol(item.AmortizedCapital, "EUR");
-                period.Interests = RemoveSymbol(item.Interests, "EUR");
-                period.FeeToPay = RemoveSymbol(item.FeeToPay, "EUR");
-                period.PendingCapital = RemoveSymbol(item.PendingCapital, "EUR");
+                var period = new MortagePeriod
+                {
+                    Id = item.Id - 1,
+                    Date = Convert.ToDateTime(item.Date),
+                    InitialCapital = RemoveSymbol(item.PendingCapital, "EUR") + RemoveSymbol(item.AmortizedCapital, "EUR"),
+                    TypeOfInterest = RemoveSymbol(item.TypeOfInterest, "%") / 100,
+                    AmortizedCapital = RemoveSymbol(item.AmortizedCapital, "EUR"),
+                    Interests = RemoveSymbol(item.Interests, "EUR"),
+                    FeeToPay = RemoveSymbol(item.FeeToPay, "EUR"),
+                    PendingCapital = RemoveSymbol(item.PendingCapital, "EUR")
+                };
                 periods.Add(period);
             }
             return periods;
         }
 
-        private static decimal RemoveSymbol(string? value, string symbol) =>
-            Convert.ToDecimal(value?.Replace(symbol, string.Empty).Trim());
+        private static double RemoveSymbol(string? value, string symbol) =>
+            Convert.ToDouble(value?.Replace(symbol, string.Empty).Trim());
         
     }
 }

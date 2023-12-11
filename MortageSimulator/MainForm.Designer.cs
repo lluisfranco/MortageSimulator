@@ -41,6 +41,7 @@
             colAmortizedCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             barButtonItemParseOriginal = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemCalculate = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             gridControl = new DevExpress.XtraGrid.GridControl();
@@ -50,6 +51,7 @@
             colDate = new DevExpress.XtraGrid.Columns.GridColumn();
             colTypeOfInterest = new DevExpress.XtraGrid.Columns.GridColumn();
             colFeeToPay = new DevExpress.XtraGrid.Columns.GridColumn();
+            colInitialCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
@@ -58,34 +60,40 @@
             // 
             // colPendingCapital
             // 
+            colPendingCapital.DisplayFormat.FormatString = "n2";
+            colPendingCapital.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colPendingCapital.FieldName = "PendingCapital";
             colPendingCapital.Name = "colPendingCapital";
             colPendingCapital.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "PendingCapital", "{0}") });
             colPendingCapital.Visible = true;
-            colPendingCapital.VisibleIndex = 6;
+            colPendingCapital.VisibleIndex = 7;
             // 
             // colInterests
             // 
+            colInterests.DisplayFormat.FormatString = "n2";
+            colInterests.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colInterests.FieldName = "Interests";
             colInterests.Name = "colInterests";
             colInterests.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Interests", "{0:n2}") });
             colInterests.Visible = true;
-            colInterests.VisibleIndex = 4;
+            colInterests.VisibleIndex = 5;
             // 
             // colAmortizedCapital
             // 
+            colAmortizedCapital.DisplayFormat.FormatString = "n2";
+            colAmortizedCapital.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colAmortizedCapital.FieldName = "AmortizedCapital";
             colAmortizedCapital.Name = "colAmortizedCapital";
             colAmortizedCapital.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AmortizedCapital", "{0:n2}") });
             colAmortizedCapital.Visible = true;
-            colAmortizedCapital.VisibleIndex = 3;
+            colAmortizedCapital.VisibleIndex = 4;
             // 
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseOriginal });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseOriginal, barButtonItemCalculate });
             ribbon.Location = new Point(0, 0);
-            ribbon.MaxItemId = 2;
+            ribbon.MaxItemId = 3;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
             ribbon.Size = new Size(1014, 158);
@@ -97,6 +105,13 @@
             barButtonItemParseOriginal.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemParseOriginal.ImageOptions.SvgImage");
             barButtonItemParseOriginal.Name = "barButtonItemParseOriginal";
             // 
+            // barButtonItemCalculate
+            // 
+            barButtonItemCalculate.Caption = "Calculate";
+            barButtonItemCalculate.Id = 2;
+            barButtonItemCalculate.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemCalculate.ImageOptions.SvgImage");
+            barButtonItemCalculate.Name = "barButtonItemCalculate";
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
@@ -106,6 +121,7 @@
             // ribbonPageGroup1
             // 
             ribbonPageGroup1.ItemLinks.Add(barButtonItemParseOriginal);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItemCalculate);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
             ribbonPageGroup1.Text = "Options";
             // 
@@ -127,7 +143,7 @@
             // 
             // gridView
             // 
-            gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colDate, colTypeOfInterest, colAmortizedCapital, colInterests, colFeeToPay, colPendingCapital });
+            gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colDate, colTypeOfInterest, colAmortizedCapital, colInterests, colFeeToPay, colPendingCapital, colInitialCapital });
             gridFormatRule1.Column = colPendingCapital;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleDataBar1.PredefinedName = "Mint";
@@ -164,17 +180,30 @@
             // 
             // colTypeOfInterest
             // 
+            colTypeOfInterest.DisplayFormat.FormatString = "P2";
+            colTypeOfInterest.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colTypeOfInterest.FieldName = "TypeOfInterest";
             colTypeOfInterest.Name = "colTypeOfInterest";
             colTypeOfInterest.Visible = true;
-            colTypeOfInterest.VisibleIndex = 2;
+            colTypeOfInterest.VisibleIndex = 3;
             // 
             // colFeeToPay
             // 
+            colFeeToPay.DisplayFormat.FormatString = "n2";
+            colFeeToPay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             colFeeToPay.FieldName = "FeeToPay";
             colFeeToPay.Name = "colFeeToPay";
             colFeeToPay.Visible = true;
-            colFeeToPay.VisibleIndex = 5;
+            colFeeToPay.VisibleIndex = 6;
+            // 
+            // colInitialCapital
+            // 
+            colInitialCapital.DisplayFormat.FormatString = "n2";
+            colInitialCapital.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            colInitialCapital.FieldName = "InitialCapital";
+            colInitialCapital.Name = "colInitialCapital";
+            colInitialCapital.Visible = true;
+            colInitialCapital.VisibleIndex = 2;
             // 
             // MainForm
             // 
@@ -210,5 +239,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colInterests;
         private DevExpress.XtraGrid.Columns.GridColumn colFeeToPay;
         private DevExpress.XtraGrid.Columns.GridColumn colPendingCapital;
+        private DevExpress.XtraGrid.Columns.GridColumn colInitialCapital;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCalculate;
     }
 }

@@ -9,19 +9,22 @@ namespace MortageSimulator
         [Description("Date")]
         public DateTime Date { get; set; }
 
+        [Description("Initial Capital")]
+        public double InitialCapital { get; set; }
+
         [Description("Type Of Interest")]
-        public decimal TypeOfInterest { get; set; }
+        public double TypeOfInterest { get; set; }
 
         [Description("Amortized Capital")]
-        public decimal AmortizedCapital { get; set; }
+        public double AmortizedCapital { get; set; }
 
         [Description("Interests")]
-        public decimal Interests { get; set; }
+        public double Interests { get; set; }
 
         [Description("Fee To Pay")]
-        public decimal FeeToPay { get; set; }
+        public double FeeToPay { get; set; }
 
         [Description("Pending Capital")]
-        public decimal PendingCapital { get; set; }
+        public double PendingCapital { get; set; }
     }
 }

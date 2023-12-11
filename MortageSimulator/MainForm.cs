@@ -17,6 +17,18 @@ namespace MortageSimulator
                 var totalInterests = periods.Sum(x => x.Interests);
                 bindingSource.DataSource = periods;
             };
+            barButtonItemCalculate.ItemClick += (s, e) =>
+            {
+                var mortageService = new MortageService(new MortageOptions
+                {
+                    FirstPeriodDate = new DateTime(2024, 1, 5),
+                    InitialCapital = 246574.64,
+                    NumberOfPeriods = 147,
+                    TypeOfInterest = 5.21,
+                });
+                var periods = mortageService.Calculate();
+                bindingSource.DataSource = periods;
+            };
         }
     }
 }
