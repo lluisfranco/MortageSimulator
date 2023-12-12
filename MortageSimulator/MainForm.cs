@@ -9,17 +9,16 @@ namespace MortageSimulator
         const string ORIGINAL_FILE = "HipotecaBM2023.txt";
         public MainForm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            DevExpressSkinHelper.SetTheme("WXI", "Default");
+            DevExpressSkinHelper.SetCompactUI(true, barCheckItemCompactUI);
             Text = string.Format($"{Application.ProductName} - " +
                 $"{Assembly.GetExecutingAssembly().GetName().Version}");
             Load += (s, e) =>
             {
-                DevExpressSkinHelper.AddDisplayAdvancedOptions(ribbon.Manager, ribbonPageGroupTheme,
-                    true, true);
-                //DevExpressSkinHelper.SetTheme(settings.Skin.SkinName, settings.Skin.SkinPalette);
-                DevExpressSkinHelper.SetCompactUI(true, barCheckItemCompactUI);
                 DevExpressSkinHelper.RemoveSkins(skinRibbonGalleryBarItem.Gallery);
                 DevExpressSkinHelper.RemoveNoVectorSkins(skinRibbonGalleryBarItem.Gallery);
+                barCheckItemCompactUI.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             };
             Shown += (s, e) =>
             {
