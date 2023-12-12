@@ -63,7 +63,15 @@ namespace MortageSimulator
             return 
                 $"{CalculationType}: Capital: {InitialCapital:n0} " +
                 $"Interest: {TypeOfInterest:n2}% Ranges: ({ranges.Count}){Environment.NewLine}{rangesstr}";
-        } 
+        }
+
+        public MortageOptions? Clone() 
+        { 
+            var newoptions = MemberwiseClone() as MortageOptions;
+            foreach (var customrange in CustomRanges)
+                newoptions?.CustomRanges.Add(customrange.Clone()!);
+            return newoptions;
+        }
     }
 
     public class MortageCustomRange

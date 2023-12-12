@@ -56,9 +56,10 @@ namespace MortageSimulator
                 }
             };
             barButtonItemAddToComparer.ItemClick += (s, e) =>
-            {                
-                if (MortageOptions != null)
-                    Comparer.Simulations.Add(MortageOptions);
+            {
+                var newoptions = MortageOptions?.Clone();
+                if (newoptions != null)
+                    Comparer.Simulations.Add(newoptions);
             };
             barButtonItemCompare.ItemClick += (s, e) =>
             {
