@@ -2,6 +2,8 @@
 {
     public class MortageService
     {
+        public const string ERROR_MESSAGE_DIFF_NUMPERIODS = 
+            "The sum of the number of periods in custom ranges must be equal to the total number of periods";
         public MortageOptions Options { get; private set; }
 
         public MortageService(MortageOptions options)

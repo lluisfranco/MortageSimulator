@@ -61,6 +61,7 @@ namespace MortageSimulator
     {
         public int NumberOfPeriods { get; set; }
         public double TypeOfInterest { get; set; }
+        public MortageCustomRange? Clone() => MemberwiseClone() as MortageCustomRange;
     }
 
     public enum CalculationTypeEnum

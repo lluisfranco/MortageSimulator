@@ -8,7 +8,7 @@
             if (!validate) return false;
             if (MortageOptions.CalculationType == CalculationTypeEnum.UseCustomRanges &&
                 MortageOptions.CustomRanges.Sum(p => p.NumberOfPeriods) != MortageOptions.NumberOfPeriods)
-                throw new Exception("The sum of the number of periods in custom ranges must be equal to the total number of periods");
+                throw new Exception(MortageService.ERROR_MESSAGE_DIFF_NUMPERIODS);
             return true;
         }
 
@@ -55,6 +55,19 @@
             textEditDifferentialRate.EditValueChanged += (s, e) =>
             {
                 RefreshRangesList();
+            };
+            layoutControlGroupCustomRanges.CustomButtonClick += (s, e) =>
+            {
+                if (e.Button.Properties.Caption == "Edit")
+                {
+                    var f = new MortageOptionsCustomRangeslListEditorForm();
+                    f.SetData(MortageOptions.CustomRanges, MortageOptions.NumberOfPeriods);
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        MortageOptions.CustomRanges = f.GetData() ?? new List<MortageCustomRange>();
+                        RefreshRangesList();
+                    }
+                }
             };
         }
     }

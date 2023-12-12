@@ -48,6 +48,7 @@
             gridControl.Name = "gridControl";
             gridControl.Size = new Size(489, 339);
             gridControl.TabIndex = 12;
+            gridControl.UseEmbeddedNavigator = true;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
             // 
             // mortageCustomRangeBindingSource
