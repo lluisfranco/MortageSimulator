@@ -30,13 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            MortageOptions mortageOptions1 = new MortageOptions();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
-            MortageOptions mortageOptions1 = new MortageOptions();
             colPendingCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             colInterests = new DevExpress.XtraGrid.Columns.GridColumn();
             colAmortizedCapital = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,13 +51,20 @@
             skinPaletteRibbonGalleryBarItem = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             barCheckItemCompactUI = new DevExpress.XtraBars.BarCheckItem();
             barButtonItemAddToComparer = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemCompare = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroupTheme = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            gridControl = new DevExpress.XtraGrid.GridControl();
             bindingSource = new BindingSource(components);
+            dockManager = new DevExpress.XtraBars.Docking.DockManager(components);
+            dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            mortageOptionsUserControl = new MortageOptionsUserControl();
+            tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
+            tabNavigationPageSimulation = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            gridControl = new DevExpress.XtraGrid.GridControl();
             gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             colId = new DevExpress.XtraGrid.Columns.GridColumn();
             colDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,18 +72,17 @@
             colFeeToPay = new DevExpress.XtraGrid.Columns.GridColumn();
             colInitialCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             colRangeId = new DevExpress.XtraGrid.Columns.GridColumn();
-            dockManager = new DevExpress.XtraBars.Docking.DockManager(components);
-            dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
-            dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            mortageOptionsUserControl = new MortageOptionsUserControl();
-            barButtonItemCompare = new DevExpress.XtraBars.BarButtonItem();
+            tabNavigationPageComparer = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dockManager).BeginInit();
             dockPanel1.SuspendLayout();
             dockPanel1_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tabPane1).BeginInit();
+            tabPane1.SuspendLayout();
+            tabNavigationPageSimulation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridView).BeginInit();
             SuspendLayout();
             // 
             // colPendingCapital
@@ -190,6 +196,13 @@
             barButtonItemAddToComparer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemAddToComparer.ImageOptions.SvgImage");
             barButtonItemAddToComparer.Name = "barButtonItemAddToComparer";
             // 
+            // barButtonItemCompare
+            // 
+            barButtonItemCompare.Caption = "Compare";
+            barButtonItemCompare.Id = 12;
+            barButtonItemCompare.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemCompare.ImageOptions.SvgImage");
+            barButtonItemCompare.Name = "barButtonItemCompare";
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup3, ribbonPageGroup2, ribbonPageGroupTheme });
@@ -227,21 +240,88 @@
             ribbonPageGroupTheme.Name = "ribbonPageGroupTheme";
             ribbonPageGroupTheme.Text = "Theme";
             // 
+            // bindingSource
+            // 
+            bindingSource.DataSource = typeof(MortagePeriod);
+            // 
+            // dockManager
+            // 
+            dockManager.Form = this;
+            dockManager.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] { dockPanel1 });
+            dockManager.TopZIndexControls.AddRange(new string[] { "DevExpress.XtraBars.BarDockControl", "DevExpress.XtraBars.StandaloneBarDockControl", "System.Windows.Forms.MenuStrip", "System.Windows.Forms.StatusStrip", "System.Windows.Forms.StatusBar", "DevExpress.XtraBars.Ribbon.RibbonStatusBar", "DevExpress.XtraBars.Ribbon.RibbonControl", "DevExpress.XtraBars.Navigation.OfficeNavigationBar", "DevExpress.XtraBars.Navigation.TileNavPane", "DevExpress.XtraBars.TabFormControl", "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl", "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl" });
+            // 
+            // dockPanel1
+            // 
+            dockPanel1.Controls.Add(dockPanel1_Container);
+            dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            dockPanel1.ID = new Guid("567f80b2-92d7-467a-8caf-207bde63914e");
+            dockPanel1.Location = new Point(0, 158);
+            dockPanel1.Name = "dockPanel1";
+            dockPanel1.OriginalSize = new Size(325, 200);
+            dockPanel1.Size = new Size(325, 682);
+            dockPanel1.Text = "Mortage Options";
+            // 
+            // dockPanel1_Container
+            // 
+            dockPanel1_Container.Controls.Add(mortageOptionsUserControl);
+            dockPanel1_Container.Location = new Point(3, 26);
+            dockPanel1_Container.Name = "dockPanel1_Container";
+            dockPanel1_Container.Size = new Size(318, 653);
+            dockPanel1_Container.TabIndex = 0;
+            // 
+            // mortageOptionsUserControl
+            // 
+            mortageOptionsUserControl.Dock = DockStyle.Fill;
+            mortageOptionsUserControl.Location = new Point(0, 0);
+            mortageOptions1.CalculationType = CalculationTypeEnum.UseFixedInterestRate;
+            mortageOptions1.DifferentialRate = 0D;
+            mortageOptions1.Euribor12MRate = 0D;
+            mortageOptions1.FirstPeriodDate = new DateTime(0L);
+            mortageOptions1.InitialCapital = 0D;
+            mortageOptions1.Name = null;
+            mortageOptions1.NumberOfPeriods = 0;
+            mortageOptions1.SuperHipotecaMixta1YearTypeOfInterest = 0D;
+            mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
+            mortageOptionsUserControl.MortageOptions = mortageOptions1;
+            mortageOptionsUserControl.Name = "mortageOptionsUserControl";
+            mortageOptionsUserControl.Size = new Size(318, 653);
+            mortageOptionsUserControl.TabIndex = 0;
+            // 
+            // tabPane1
+            // 
+            tabPane1.Controls.Add(tabNavigationPageSimulation);
+            tabPane1.Controls.Add(tabNavigationPageComparer);
+            tabPane1.Dock = DockStyle.Fill;
+            tabPane1.Location = new Point(325, 158);
+            tabPane1.Name = "tabPane1";
+            tabPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
+            tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] { tabNavigationPageSimulation, tabNavigationPageComparer });
+            tabPane1.RegularSize = new Size(787, 682);
+            tabPane1.SelectedPage = tabNavigationPageSimulation;
+            tabPane1.Size = new Size(787, 682);
+            tabPane1.TabIndex = 6;
+            tabPane1.Text = "tabPane1";
+            // 
+            // tabNavigationPageSimulation
+            // 
+            tabNavigationPageSimulation.Caption = "SIMULATION";
+            tabNavigationPageSimulation.Controls.Add(gridControl);
+            tabNavigationPageSimulation.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("tabNavigationPageSimulation.ImageOptions.SvgImage");
+            tabNavigationPageSimulation.ImageOptions.SvgImageSize = new Size(16, 16);
+            tabNavigationPageSimulation.Name = "tabNavigationPageSimulation";
+            tabNavigationPageSimulation.Size = new Size(787, 649);
+            // 
             // gridControl
             // 
             gridControl.DataSource = bindingSource;
             gridControl.Dock = DockStyle.Fill;
-            gridControl.Location = new Point(325, 158);
+            gridControl.Location = new Point(0, 0);
             gridControl.MainView = gridView;
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new Size(787, 682);
-            gridControl.TabIndex = 3;
+            gridControl.Size = new Size(787, 649);
+            gridControl.TabIndex = 4;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
-            // 
-            // bindingSource
-            // 
-            bindingSource.DataSource = typeof(MortagePeriod);
             // 
             // gridView
             // 
@@ -267,6 +347,7 @@
             gridView.OptionsMenu.ShowConditionalFormattingItem = true;
             gridView.OptionsSelection.MultiSelect = true;
             gridView.OptionsView.ShowFooter = true;
+            gridView.OptionsView.ShowGroupPanel = false;
             // 
             // colId
             // 
@@ -318,62 +399,20 @@
             colRangeId.Visible = true;
             colRangeId.VisibleIndex = 0;
             // 
-            // dockManager
+            // tabNavigationPageComparer
             // 
-            dockManager.Form = this;
-            dockManager.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] { dockPanel1 });
-            dockManager.TopZIndexControls.AddRange(new string[] { "DevExpress.XtraBars.BarDockControl", "DevExpress.XtraBars.StandaloneBarDockControl", "System.Windows.Forms.MenuStrip", "System.Windows.Forms.StatusStrip", "System.Windows.Forms.StatusBar", "DevExpress.XtraBars.Ribbon.RibbonStatusBar", "DevExpress.XtraBars.Ribbon.RibbonControl", "DevExpress.XtraBars.Navigation.OfficeNavigationBar", "DevExpress.XtraBars.Navigation.TileNavPane", "DevExpress.XtraBars.TabFormControl", "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl", "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl" });
-            // 
-            // dockPanel1
-            // 
-            dockPanel1.Controls.Add(dockPanel1_Container);
-            dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            dockPanel1.ID = new Guid("567f80b2-92d7-467a-8caf-207bde63914e");
-            dockPanel1.Location = new Point(0, 158);
-            dockPanel1.Name = "dockPanel1";
-            dockPanel1.OriginalSize = new Size(325, 200);
-            dockPanel1.Size = new Size(325, 682);
-            dockPanel1.Text = "Mortage Options";
-            // 
-            // dockPanel1_Container
-            // 
-            dockPanel1_Container.Controls.Add(mortageOptionsUserControl);
-            dockPanel1_Container.Location = new Point(3, 26);
-            dockPanel1_Container.Name = "dockPanel1_Container";
-            dockPanel1_Container.Size = new Size(318, 653);
-            dockPanel1_Container.TabIndex = 0;
-            // 
-            // mortageOptionsUserControl
-            // 
-            mortageOptionsUserControl.Dock = DockStyle.Fill;
-            mortageOptionsUserControl.Location = new Point(0, 0);
-            mortageOptions1.CalculationType = CalculationTypeEnum.UseFixedInterestRate;
-            mortageOptions1.DifferentialRate = 0D;
-            mortageOptions1.Euribor12MRate = 0D;
-            mortageOptions1.FirstPeriodDate = new DateTime(0L);
-            mortageOptions1.InitialCapital = 0D;
-            mortageOptions1.Name = null;
-            mortageOptions1.NumberOfPeriods = 0;
-            mortageOptions1.SuperHipotecaMixta1YearTypeOfInterest = 0D;
-            mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
-            mortageOptionsUserControl.MortageOptions = mortageOptions1;
-            mortageOptionsUserControl.Name = "mortageOptionsUserControl";
-            mortageOptionsUserControl.Size = new Size(318, 653);
-            mortageOptionsUserControl.TabIndex = 0;
-            // 
-            // barButtonItemCompare
-            // 
-            barButtonItemCompare.Caption = "Compare...";
-            barButtonItemCompare.Id = 12;
-            barButtonItemCompare.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemCompare.ImageOptions.SvgImage");
-            barButtonItemCompare.Name = "barButtonItemCompare";
+            tabNavigationPageComparer.Caption = "COMPARER";
+            tabNavigationPageComparer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("tabNavigationPageComparer.ImageOptions.SvgImage");
+            tabNavigationPageComparer.ImageOptions.SvgImageSize = new Size(16, 16);
+            tabNavigationPageComparer.Name = "tabNavigationPageComparer";
+            tabNavigationPageComparer.Size = new Size(787, 649);
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(6F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1112, 840);
-            Controls.Add(gridControl);
+            Controls.Add(tabPane1);
             Controls.Add(dockPanel1);
             Controls.Add(ribbon);
             IconOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("MainForm.IconOptions.SvgImage");
@@ -382,12 +421,15 @@
             Text = "Mortage Simulator";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)ribbon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)dockManager).EndInit();
             dockPanel1.ResumeLayout(false);
             dockPanel1_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)tabPane1).EndInit();
+            tabPane1.ResumeLayout(false);
+            tabNavigationPageSimulation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)gridControl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -398,17 +440,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemParseDefaultFile;
-        private DevExpress.XtraGrid.GridControl gridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private BindingSource bindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colDate;
-        private DevExpress.XtraGrid.Columns.GridColumn colTypeOfInterest;
-        private DevExpress.XtraGrid.Columns.GridColumn colAmortizedCapital;
-        private DevExpress.XtraGrid.Columns.GridColumn colInterests;
-        private DevExpress.XtraGrid.Columns.GridColumn colFeeToPay;
-        private DevExpress.XtraGrid.Columns.GridColumn colPendingCapital;
-        private DevExpress.XtraGrid.Columns.GridColumn colInitialCapital;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCalculate;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
@@ -419,7 +451,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpen;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraGrid.Columns.GridColumn colRangeId;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupTheme;
@@ -427,5 +458,19 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddToComparer;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCompare;
+        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageSimulation;
+        private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colTypeOfInterest;
+        private DevExpress.XtraGrid.Columns.GridColumn colAmortizedCapital;
+        private DevExpress.XtraGrid.Columns.GridColumn colInterests;
+        private DevExpress.XtraGrid.Columns.GridColumn colFeeToPay;
+        private DevExpress.XtraGrid.Columns.GridColumn colPendingCapital;
+        private DevExpress.XtraGrid.Columns.GridColumn colInitialCapital;
+        private DevExpress.XtraGrid.Columns.GridColumn colRangeId;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageComparer;
     }
 }
