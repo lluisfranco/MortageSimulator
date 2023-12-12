@@ -1,7 +1,38 @@
-﻿namespace MortageSimulator
+﻿using System.Text.Json;
+
+namespace MortageSimulator
 {
     public class FileHelper
     {
+        public static void SaveToFile(MortageOptions options, string extension = "msf")
+        {
+            using var fd = new SaveFileDialog()
+            {
+                Filter = $"*.{extension}|*.{extension}|All Files (*.*)|*.*",
+            };
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                var content = JsonSerializer.Serialize(options,
+                    new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(fd.FileName, content);
+            }
+        }
+
+        public static MortageOptions OpenFromFile(string extension = "msf")
+        {
+            using var fd = new OpenFileDialog()
+            {
+                Filter = $"*.{extension}|*.{extension}|All Files (*.*)|*.*",
+            };
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                var content = File.ReadAllText(fd.FileName);
+                return JsonSerializer.Deserialize<MortageOptions>(content) ?? new();
+            }
+            else
+                return new();
+        }
+
         public static IList<MortagePeriod> CalculatePeriodsFromFile(string file)
         {
             try
