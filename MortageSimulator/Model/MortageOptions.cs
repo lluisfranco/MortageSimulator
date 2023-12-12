@@ -35,29 +35,29 @@ namespace MortageSimulator
         [Description("Super Hipoteca Mixta After 5th Year Type Of Interest")]
         public double SuperHipotecaMixtaAfter5YearTypeOfInterest => Euribor12MRate + 0.5;
 
-        public IList<MortageCustomPeriod> CustomPeriods { get; set; } = new List<MortageCustomPeriod>();
+        public IList<MortageCustomRange> CustomRanges { get; set; } = new List<MortageCustomRange>();
 
-        public IList<MortageCustomPeriod> GetPeriods()
+        public IList<MortageCustomRange> GetDefaultRanges()
         {
-            var customperiods = new List<MortageCustomPeriod>();
+            var customranges = new List<MortageCustomRange>();
             if (CalculationType == CalculationTypeEnum.UseFixedInterestRate)
             {
-                customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = NumberOfPeriods, TypeOfInterest = TypeOfInterest });
+                customranges.Add(new MortageCustomRange() { NumberOfPeriods = NumberOfPeriods, TypeOfInterest = TypeOfInterest });
             }
             if (CalculationType == CalculationTypeEnum.UseSuperHipotecaMixta)
             {
-                customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = 12, TypeOfInterest = SuperHipotecaMixta1YearTypeOfInterest });
-                customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = 48, TypeOfInterest = SuperHipotecaMixta2To5YearTypeOfInterest });
-                customperiods.Add(new MortageCustomPeriod() { NumberOfPeriods = NumberOfPeriods - 60, TypeOfInterest = SuperHipotecaMixtaAfter5YearTypeOfInterest });
+                customranges.Add(new MortageCustomRange() { NumberOfPeriods = 12, TypeOfInterest = SuperHipotecaMixta1YearTypeOfInterest });
+                customranges.Add(new MortageCustomRange() { NumberOfPeriods = 48, TypeOfInterest = SuperHipotecaMixta2To5YearTypeOfInterest });
+                customranges.Add(new MortageCustomRange() { NumberOfPeriods = NumberOfPeriods - 60, TypeOfInterest = SuperHipotecaMixtaAfter5YearTypeOfInterest });
             }
-            if (CalculationType == CalculationTypeEnum.UseCustomPeriods)
-                customperiods.AddRange(CustomPeriods);
-            return customperiods;
+            if (CalculationType == CalculationTypeEnum.UseCustomRanges)
+                customranges.AddRange(CustomRanges);
+            return customranges;
         }
 
     }
 
-    public class MortageCustomPeriod
+    public class MortageCustomRange
     {
         public int NumberOfPeriods { get; set; }
         public double TypeOfInterest { get; set; }
@@ -71,7 +71,7 @@ namespace MortageSimulator
         [Description("Use Super Hipoteca Mixta")]
         UseSuperHipotecaMixta,
 
-        [Description("Use Custom Periods")]
-        UseCustomPeriods
+        [Description("Use Custom Ranges")]
+        UseCustomRanges
     }
 }

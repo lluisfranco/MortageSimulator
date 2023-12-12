@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MortageOptionsUserControl));
             dataLayoutControl = new DevExpress.XtraDataLayout.DataLayoutControl();
             gridControlPeriods = new DevExpress.XtraGrid.GridControl();
-            mortageCustomPeriodBindingSource = new BindingSource(components);
+            mortageCustomRangeBindingSource = new BindingSource(components);
             gridViewPeriods = new DevExpress.XtraGrid.Views.Grid.GridView();
             colNumberOfPeriods = new DevExpress.XtraGrid.Columns.GridColumn();
             colTypeOfInterest = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,13 +61,13 @@
             ItemForSuperHipotecaMixta1YearTypeOfInterest = new DevExpress.XtraLayout.LayoutControlItem();
             ItemForSuperHipotecaMixta2To5YearTypeOfInterest = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            layoutControlGroupCustomPeriods = new DevExpress.XtraLayout.LayoutControlGroup();
+            layoutControlGroupCustomRanges = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)dataLayoutControl).BeginInit();
             dataLayoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControlPeriods).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)mortageCustomPeriodBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mortageCustomRangeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridViewPeriods).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEditDifferentialRate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mortageOptionsBindingSource).BeginInit();
@@ -94,7 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta1YearTypeOfInterest).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta2To5YearTypeOfInterest).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlGroupCustomPeriods).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlGroupCustomRanges).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
             SuspendLayout();
@@ -123,7 +123,7 @@
             // 
             // gridControlPeriods
             // 
-            gridControlPeriods.DataSource = mortageCustomPeriodBindingSource;
+            gridControlPeriods.DataSource = mortageCustomRangeBindingSource;
             gridControlPeriods.Location = new Point(24, 515);
             gridControlPeriods.MainView = gridViewPeriods;
             gridControlPeriods.Name = "gridControlPeriods";
@@ -131,9 +131,9 @@
             gridControlPeriods.TabIndex = 11;
             gridControlPeriods.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridViewPeriods });
             // 
-            // mortageCustomPeriodBindingSource
+            // mortageCustomRangeBindingSource
             // 
-            mortageCustomPeriodBindingSource.DataSource = typeof(MortageCustomPeriod);
+            mortageCustomRangeBindingSource.DataSource = typeof(MortageCustomRange);
             // 
             // gridViewPeriods
             // 
@@ -314,7 +314,7 @@
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlGroup2, layoutControlGroup1, layoutControlGroupCustomPeriods });
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlGroup2, layoutControlGroup1, layoutControlGroupCustomRanges });
             Root.Name = "Root";
             Root.Size = new Size(434, 715);
             Root.TextVisible = false;
@@ -431,17 +431,17 @@
             layoutControlItem3.TextSize = new Size(0, 0);
             layoutControlItem3.TextVisible = false;
             // 
-            // layoutControlGroupCustomPeriods
+            // layoutControlGroupCustomRanges
             // 
-            buttonImageOptions1.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("buttonImageOptions1.SvgImage");
-            buttonImageOptions1.SvgImageSize = new Size(12, 12);
-            layoutControlGroupCustomPeriods.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] { new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Edit", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Edit custom periods", -1, false, null, true, false, true, null, -1) });
-            layoutControlGroupCustomPeriods.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            layoutControlGroupCustomPeriods.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem6 });
-            layoutControlGroupCustomPeriods.Location = new Point(0, 470);
-            layoutControlGroupCustomPeriods.Name = "layoutControlGroupCustomPeriods";
-            layoutControlGroupCustomPeriods.Size = new Size(414, 225);
-            layoutControlGroupCustomPeriods.Text = "CUSTOM PERIODS";
+            buttonImageOptions2.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("buttonImageOptions2.SvgImage");
+            buttonImageOptions2.SvgImageSize = new Size(12, 12);
+            layoutControlGroupCustomRanges.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] { new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Edit", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Edit custom periods", -1, false, null, true, false, true, null, -1) });
+            layoutControlGroupCustomRanges.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            layoutControlGroupCustomRanges.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem6 });
+            layoutControlGroupCustomRanges.Location = new Point(0, 470);
+            layoutControlGroupCustomRanges.Name = "layoutControlGroupCustomRanges";
+            layoutControlGroupCustomRanges.Size = new Size(414, 225);
+            layoutControlGroupCustomRanges.Text = "CUSTOM RANGES";
             // 
             // layoutControlItem6
             // 
@@ -471,7 +471,7 @@
             ((System.ComponentModel.ISupportInitialize)dataLayoutControl).EndInit();
             dataLayoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControlPeriods).EndInit();
-            ((System.ComponentModel.ISupportInitialize)mortageCustomPeriodBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mortageCustomRangeBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridViewPeriods).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEditDifferentialRate.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)mortageOptionsBindingSource).EndInit();
@@ -498,7 +498,7 @@
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta1YearTypeOfInterest).EndInit();
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta2To5YearTypeOfInterest).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlGroupCustomPeriods).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlGroupCustomRanges).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
             ResumeLayout(false);
@@ -532,11 +532,11 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupCustomPeriods;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupCustomRanges;
         private DevExpress.XtraGrid.GridControl gridControlPeriods;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewPeriods;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private BindingSource mortageCustomPeriodBindingSource;
+        private BindingSource mortageCustomRangeBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colNumberOfPeriods;
         private DevExpress.XtraGrid.Columns.GridColumn colTypeOfInterest;
     }

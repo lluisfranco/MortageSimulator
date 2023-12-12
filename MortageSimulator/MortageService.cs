@@ -13,11 +13,11 @@
         {
             IList<MortagePeriod> periods = new List<MortagePeriod>(); 
             if (Options.CalculationType == CalculationTypeEnum.UseFixedInterestRate) 
-                periods = CalculateFromPeriods(Options.GetPeriods()); //CalculateUsingFixedInterestRate();
+                periods = CalculateFromPeriods(Options.GetDefaultRanges()); //CalculateUsingFixedInterestRate();
             if (Options.CalculationType == CalculationTypeEnum.UseSuperHipotecaMixta)
-                periods = CalculateFromPeriods(Options.GetPeriods());// CalculateUsingSuperHipotecaMitxa();
-            if (Options.CalculationType == CalculationTypeEnum.UseCustomPeriods)
-                periods = CalculateFromPeriods(Options.CustomPeriods);
+                periods = CalculateFromPeriods(Options.GetDefaultRanges());// CalculateUsingSuperHipotecaMitxa();
+            if (Options.CalculationType == CalculationTypeEnum.UseCustomRanges)
+                periods = CalculateFromPeriods(Options.CustomRanges);
             return periods;
         }
 
@@ -98,7 +98,7 @@
         //    return periods;
         //}
 
-        public IList<MortagePeriod> CalculateFromPeriods(IList<MortageCustomPeriod> customPeriods)
+        public IList<MortagePeriod> CalculateFromPeriods(IList<MortageCustomRange> customPeriods)
         {
             var currentPeriodDate = Options.FirstPeriodDate;
             int index = 0;
