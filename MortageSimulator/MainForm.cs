@@ -5,7 +5,9 @@ namespace MortageSimulator
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public MortageOptions MortageOptions { get; set; }
+        public MortageOptions MortageOptions { get; private set; }
+        public MortageComparer Comparer { get; private set; } = new();
+
         const string ORIGINAL_FILE = "HipotecaBM2023.txt";
         public MainForm()
         {
@@ -31,8 +33,8 @@ namespace MortageSimulator
                     DifferentialRate = 1,
                     CalculationType = CalculationTypeEnum.UseFixedInterestRate,
                 };
-                MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 12, TypeOfInterest = 5.21 });
-                MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 135, TypeOfInterest = 2 });
+                //MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 12, TypeOfInterest = 5.21 });
+                //MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 135, TypeOfInterest = 2 });
                 mortageOptionsUserControl.MortageOptions = MortageOptions;
             };
             barButtonItemOpen.ItemClick += (s, e) =>
@@ -55,6 +57,11 @@ namespace MortageSimulator
                 {
                     MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            };
+            barButtonItemAddToComparer.ItemClick += (s, e) =>
+            {                
+                if (MortageOptions != null)
+                    Comparer.Simulations.Add(MortageOptions);
             };
             barButtonItemExportToExcel.ItemClick += (s, e) =>
             {

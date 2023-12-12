@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel;
-using static System.Windows.Forms.Design.AxImporter;
 
 namespace MortageSimulator
 {
     public class MortageOptions
     {
+        public string? Name { get; set; }
         [Description("Initial Capital")]
         public double InitialCapital { get; set; }
 
@@ -55,6 +55,15 @@ namespace MortageSimulator
             return customranges;
         }
 
+        public override string ToString()
+        {
+            var ranges = GetDefaultRanges();
+            var rangesstr = string.Join(Environment.NewLine,
+                ranges.Select(p => $"Periods: {p.NumberOfPeriods} Interest: {p.TypeOfInterest}%").ToList());
+            return 
+                $"{CalculationType}: Capital: {InitialCapital:n0} " +
+                $"Interest: {TypeOfInterest:n2}% Ranges: ({ranges.Count}){Environment.NewLine}{rangesstr}";
+        } 
     }
 
     public class MortageCustomRange

@@ -67,6 +67,8 @@
             dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             mortageOptionsUserControl = new MortageOptionsUserControl();
+            ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            barButtonItemAddToComparer = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
@@ -109,12 +111,12 @@
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI, barButtonItemAddToComparer });
             ribbon.Location = new Point(0, 0);
-            ribbon.MaxItemId = 11;
+            ribbon.MaxItemId = 12;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
-            ribbon.Size = new Size(1112, 170);
+            ribbon.Size = new Size(1112, 158);
             // 
             // barButtonItemParseDefaultFile
             // 
@@ -140,7 +142,7 @@
             // 
             // barButtonItemExportToExcel
             // 
-            barButtonItemExportToExcel.Caption = "ExportToExcel";
+            barButtonItemExportToExcel.Caption = "Export To Excel";
             barButtonItemExportToExcel.Id = 4;
             barButtonItemExportToExcel.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemExportToExcel.ImageOptions.SvgImage");
             barButtonItemExportToExcel.Name = "barButtonItemExportToExcel";
@@ -182,7 +184,7 @@
             // 
             // ribbonPage1
             // 
-            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroupTheme });
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup3, ribbonPageGroup2, ribbonPageGroupTheme });
             ribbonPage1.Name = "ribbonPage1";
             ribbonPage1.Text = "GENERAL";
             // 
@@ -214,11 +216,11 @@
             // 
             gridControl.DataSource = bindingSource;
             gridControl.Dock = DockStyle.Fill;
-            gridControl.Location = new Point(325, 170);
+            gridControl.Location = new Point(325, 158);
             gridControl.MainView = gridView;
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new Size(787, 670);
+            gridControl.Size = new Size(787, 682);
             gridControl.TabIndex = 3;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
             // 
@@ -312,18 +314,18 @@
             dockPanel1.Controls.Add(dockPanel1_Container);
             dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             dockPanel1.ID = new Guid("567f80b2-92d7-467a-8caf-207bde63914e");
-            dockPanel1.Location = new Point(0, 170);
+            dockPanel1.Location = new Point(0, 158);
             dockPanel1.Name = "dockPanel1";
             dockPanel1.OriginalSize = new Size(325, 200);
-            dockPanel1.Size = new Size(325, 670);
+            dockPanel1.Size = new Size(325, 682);
             dockPanel1.Text = "Mortage Options";
             // 
             // dockPanel1_Container
             // 
             dockPanel1_Container.Controls.Add(mortageOptionsUserControl);
-            dockPanel1_Container.Location = new Point(3, 31);
+            dockPanel1_Container.Location = new Point(3, 26);
             dockPanel1_Container.Name = "dockPanel1_Container";
-            dockPanel1_Container.Size = new Size(318, 636);
+            dockPanel1_Container.Size = new Size(318, 653);
             dockPanel1_Container.TabIndex = 0;
             // 
             // mortageOptionsUserControl
@@ -340,8 +342,21 @@
             mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
             mortageOptionsUserControl.MortageOptions = mortageOptions1;
             mortageOptionsUserControl.Name = "mortageOptionsUserControl";
-            mortageOptionsUserControl.Size = new Size(318, 636);
+            mortageOptionsUserControl.Size = new Size(318, 653);
             mortageOptionsUserControl.TabIndex = 0;
+            // 
+            // ribbonPageGroup3
+            // 
+            ribbonPageGroup3.ItemLinks.Add(barButtonItemAddToComparer);
+            ribbonPageGroup3.Name = "ribbonPageGroup3";
+            ribbonPageGroup3.Text = "Comparer";
+            // 
+            // barButtonItemAddToComparer
+            // 
+            barButtonItemAddToComparer.Caption = "Add Simulation To Comparer";
+            barButtonItemAddToComparer.Id = 11;
+            barButtonItemAddToComparer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemAddToComparer.ImageOptions.SvgImage");
+            barButtonItemAddToComparer.Name = "barButtonItemAddToComparer";
             // 
             // MainForm
             // 
@@ -399,5 +414,7 @@
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupTheme;
         private DevExpress.XtraBars.BarCheckItem barCheckItemCompactUI;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemAddToComparer;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
