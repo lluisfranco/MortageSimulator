@@ -3,6 +3,8 @@
     public class MortageComparerResult
     {
         public int Year { get; set; }
+        public int NumberOfPeriods { get; set; }
+        public double AverageTypeOfInterest { get; set; }
         public double TotalInterests { get; set; }
         public double TotalFeeToPay { get; set; }
         public double TotalAmortizedCapital { get; set; }
@@ -22,6 +24,8 @@
                 var result = periods.GroupBy(p => p.Date.Year).Select(g => new MortageComparerResult()
                 {
                     Year = g.Key,
+                    NumberOfPeriods = g.Count(),
+                    AverageTypeOfInterest = g.Average(p => p.TypeOfInterest),
                     TotalInterests = g.Sum(p => p.Interests),
                     TotalFeeToPay = g.Sum(p => p.FeeToPay),
                     TotalAmortizedCapital = g.Sum(p => p.AmortizedCapital)

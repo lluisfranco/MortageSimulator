@@ -20,7 +20,6 @@ namespace MortageSimulator
             {
                 DevExpressSkinHelper.RemoveSkins(skinRibbonGalleryBarItem.Gallery);
                 DevExpressSkinHelper.RemoveNoVectorSkins(skinRibbonGalleryBarItem.Gallery);
-                barCheckItemCompactUI.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             };
             Shown += (s, e) =>
             {
@@ -33,8 +32,6 @@ namespace MortageSimulator
                     DifferentialRate = 1,
                     CalculationType = CalculationTypeEnum.UseFixedInterestRate,
                 };
-                //MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 12, TypeOfInterest = 5.21 });
-                //MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 135, TypeOfInterest = 2 });
                 mortageOptionsUserControl.MortageOptions = MortageOptions;
             };
             barButtonItemOpen.ItemClick += (s, e) =>
@@ -94,6 +91,10 @@ namespace MortageSimulator
                 };
                 if (fd.ShowDialog() == DialogResult.OK)
                     CalculatePeriodsFromFile(fd.FileName);
+            };
+            barCheckItemCompactUI.ItemClick+= (s, e) =>
+            {
+                DevExpressSkinHelper.SetCompactUI(barCheckItemCompactUI.Checked, barCheckItemCompactUI);
             };
         }
 
