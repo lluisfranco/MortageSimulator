@@ -45,8 +45,11 @@
             barButtonItemCalculate = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemParseFile = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemExportToExcel = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemOpen = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             gridControl = new DevExpress.XtraGrid.GridControl();
             bindingSource = new BindingSource(components);
             gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -55,6 +58,7 @@
             colTypeOfInterest = new DevExpress.XtraGrid.Columns.GridColumn();
             colFeeToPay = new DevExpress.XtraGrid.Columns.GridColumn();
             colInitialCapital = new DevExpress.XtraGrid.Columns.GridColumn();
+            colRangeId = new DevExpress.XtraGrid.Columns.GridColumn();
             dockManager = new DevExpress.XtraBars.Docking.DockManager(components);
             dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -76,7 +80,7 @@
             colPendingCapital.Name = "colPendingCapital";
             colPendingCapital.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "PendingCapital", "{0}") });
             colPendingCapital.Visible = true;
-            colPendingCapital.VisibleIndex = 7;
+            colPendingCapital.VisibleIndex = 8;
             // 
             // colInterests
             // 
@@ -86,7 +90,7 @@
             colInterests.Name = "colInterests";
             colInterests.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Interests", "{0:n2}") });
             colInterests.Visible = true;
-            colInterests.VisibleIndex = 5;
+            colInterests.VisibleIndex = 7;
             // 
             // colAmortizedCapital
             // 
@@ -96,14 +100,14 @@
             colAmortizedCapital.Name = "colAmortizedCapital";
             colAmortizedCapital.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AmortizedCapital", "{0:n2}") });
             colAmortizedCapital.Visible = true;
-            colAmortizedCapital.VisibleIndex = 4;
+            colAmortizedCapital.VisibleIndex = 6;
             // 
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave });
             ribbon.Location = new Point(0, 0);
-            ribbon.MaxItemId = 5;
+            ribbon.MaxItemId = 7;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
             ribbon.Size = new Size(1112, 158);
@@ -137,20 +141,41 @@
             barButtonItemExportToExcel.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemExportToExcel.ImageOptions.SvgImage");
             barButtonItemExportToExcel.Name = "barButtonItemExportToExcel";
             // 
+            // barButtonItemOpen
+            // 
+            barButtonItemOpen.Caption = "Open...";
+            barButtonItemOpen.Id = 5;
+            barButtonItemOpen.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemOpen.ImageOptions.SvgImage");
+            barButtonItemOpen.Name = "barButtonItemOpen";
+            // 
+            // barButtonItemSave
+            // 
+            barButtonItemSave.Caption = "Save...";
+            barButtonItemSave.Id = 6;
+            barButtonItemSave.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSave.ImageOptions.SvgImage");
+            barButtonItemSave.Name = "barButtonItemSave";
+            // 
             // ribbonPage1
             // 
-            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2 });
             ribbonPage1.Name = "ribbonPage1";
             ribbonPage1.Text = "GENERAL";
             // 
             // ribbonPageGroup1
             // 
-            ribbonPageGroup1.ItemLinks.Add(barButtonItemParseDefaultFile);
-            ribbonPageGroup1.ItemLinks.Add(barButtonItemParseFile);
-            ribbonPageGroup1.ItemLinks.Add(barButtonItemCalculate);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItemOpen);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItemSave);
+            ribbonPageGroup1.ItemLinks.Add(barButtonItemCalculate, true);
             ribbonPageGroup1.ItemLinks.Add(barButtonItemExportToExcel, true);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
             ribbonPageGroup1.Text = "Options";
+            // 
+            // ribbonPageGroup2
+            // 
+            ribbonPageGroup2.ItemLinks.Add(barButtonItemParseFile);
+            ribbonPageGroup2.ItemLinks.Add(barButtonItemParseDefaultFile);
+            ribbonPageGroup2.Name = "ribbonPageGroup2";
+            ribbonPageGroup2.Text = "Extensions";
             // 
             // gridControl
             // 
@@ -170,7 +195,7 @@
             // 
             // gridView
             // 
-            gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colDate, colTypeOfInterest, colAmortizedCapital, colInterests, colFeeToPay, colPendingCapital, colInitialCapital });
+            gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colId, colDate, colTypeOfInterest, colAmortizedCapital, colInterests, colFeeToPay, colPendingCapital, colInitialCapital, colRangeId });
             gridFormatRule1.Column = colPendingCapital;
             gridFormatRule1.Name = "Format0";
             formatConditionRuleDataBar1.PredefinedName = "Mint";
@@ -195,17 +220,17 @@
             // 
             // colId
             // 
-            colId.FieldName = "Id";
+            colId.FieldName = "PeriodId";
             colId.Name = "colId";
             colId.Visible = true;
-            colId.VisibleIndex = 0;
+            colId.VisibleIndex = 1;
             // 
             // colDate
             // 
             colDate.FieldName = "Date";
             colDate.Name = "colDate";
             colDate.Visible = true;
-            colDate.VisibleIndex = 1;
+            colDate.VisibleIndex = 2;
             // 
             // colTypeOfInterest
             // 
@@ -215,7 +240,7 @@
             colTypeOfInterest.FieldName = "TypeOfInterest";
             colTypeOfInterest.Name = "colTypeOfInterest";
             colTypeOfInterest.Visible = true;
-            colTypeOfInterest.VisibleIndex = 3;
+            colTypeOfInterest.VisibleIndex = 4;
             // 
             // colFeeToPay
             // 
@@ -225,7 +250,7 @@
             colFeeToPay.Name = "colFeeToPay";
             colFeeToPay.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "FeeToPay", "{0:n2}") });
             colFeeToPay.Visible = true;
-            colFeeToPay.VisibleIndex = 6;
+            colFeeToPay.VisibleIndex = 5;
             // 
             // colInitialCapital
             // 
@@ -234,7 +259,14 @@
             colInitialCapital.FieldName = "InitialCapital";
             colInitialCapital.Name = "colInitialCapital";
             colInitialCapital.Visible = true;
-            colInitialCapital.VisibleIndex = 2;
+            colInitialCapital.VisibleIndex = 3;
+            // 
+            // colRangeId
+            // 
+            colRangeId.FieldName = "RangeId";
+            colRangeId.Name = "colRangeId";
+            colRangeId.Visible = true;
+            colRangeId.VisibleIndex = 0;
             // 
             // dockManager
             // 
@@ -326,5 +358,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemParseFile;
         private MortageOptionsUserControl mortageOptionsUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItemExportToExcel;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpen;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraGrid.Columns.GridColumn colRangeId;
     }
 }

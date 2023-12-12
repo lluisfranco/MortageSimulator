@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.IO;
 
 namespace MortageSimulator
 {
@@ -25,29 +24,21 @@ namespace MortageSimulator
                 MortageOptions.CustomRanges.Add(new MortageCustomRange() { NumberOfPeriods = 135, TypeOfInterest = 2 });
                 mortageOptionsUserControl.MortageOptions = MortageOptions;
             };
-            barButtonItemParseDefaultFile.ItemClick += (s, e) =>
+            barButtonItemOpen.ItemClick += (s, e) =>
             {
-                var file = Path.Combine("Files", ORIGINAL_FILE);
-                CalculatePeriodsFromFile(file);
+                mortageOptionsUserControl.MortageOptions = FileHelper.OpenFromFile();
+                CalculateMortage();
             };
-            barButtonItemParseFile.ItemClick += (s, e) =>
+            barButtonItemSave.ItemClick += (s, e) =>
             {
-                using var fd = new OpenFileDialog()
-                {
-                    Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
-                };
-                if (fd.ShowDialog() == DialogResult.OK)
-                    CalculatePeriodsFromFile(fd.FileName);
+                FileHelper.SaveToFile(mortageOptionsUserControl.MortageOptions);
             };
             barButtonItemCalculate.ItemClick += (s, e) =>
             {
                 try
                 {
                     if (!mortageOptionsUserControl.ValidateData()) return;
-                    var mortageService = new MortageService(mortageOptionsUserControl.MortageOptions);
-                    var periods = mortageService.Calculate();
-                    bindingSource.DataSource = periods;
-                    gridView.RefreshData();
+                    CalculateMortage();
                 }
                 catch (Exception ex)
                 {
@@ -67,6 +58,28 @@ namespace MortageSimulator
                     }
                 }.Start();
             };
+            barButtonItemParseDefaultFile.ItemClick += (s, e) =>
+            {
+                var file = Path.Combine("Files", ORIGINAL_FILE);
+                CalculatePeriodsFromFile(file);
+            };
+            barButtonItemParseFile.ItemClick += (s, e) =>
+            {
+                using var fd = new OpenFileDialog()
+                {
+                    Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+                };
+                if (fd.ShowDialog() == DialogResult.OK)
+                    CalculatePeriodsFromFile(fd.FileName);
+            };
+        }
+
+        private void CalculateMortage()
+        {
+            var mortageService = new MortageService(mortageOptionsUserControl.MortageOptions);
+            var periods = mortageService.Calculate();
+            bindingSource.DataSource = periods;
+            gridView.RefreshData();
         }
 
         private void CalculatePeriodsFromFile(string file) =>

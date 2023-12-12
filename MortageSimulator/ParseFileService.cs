@@ -44,7 +44,7 @@ namespace MortageSimulator
             {
                 var period = new MortagePeriod
                 {
-                    Id = item.Id - 1,
+                    PeriodId = item.Id - 1,
                     Date = Convert.ToDateTime(item.Date),
                     InitialCapital = RemoveSymbol(item.PendingCapital, "EUR") + RemoveSymbol(item.AmortizedCapital, "EUR"),
                     TypeOfInterest = RemoveSymbol(item.TypeOfInterest, "%") / 100,

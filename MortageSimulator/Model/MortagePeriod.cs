@@ -4,7 +4,8 @@ namespace MortageSimulator
 {
     public class MortagePeriod
     {
-        public int Id { get; set; }
+        public int RangeId { get; set; }
+        public int PeriodId { get; set; }
 
         [Description("Date")]
         public DateTime Date { get; set; }
