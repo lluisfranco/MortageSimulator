@@ -2,6 +2,16 @@
 {
     public partial class MortageOptionsUserControl : DevExpress.XtraEditors.XtraUserControl
     {
+        public bool ValidateData()
+        {
+            var validate = dxValidationProvider.Validate();
+            if (!validate) return false;
+            if (MortageOptions.CalculationType == CalculationTypeEnum.UseCustomRanges &&
+                MortageOptions.CustomRanges.Sum(p => p.NumberOfPeriods) != MortageOptions.NumberOfPeriods)
+                throw new Exception("The sum of the number of periods in custom ranges must be equal to the total number of periods");
+            return true;
+        }
+
         public MortageOptions MortageOptions
         {
             get
@@ -14,10 +24,13 @@
                 if (value != null)
                 {
                     mortageOptionsBindingSource.DataSource = value;
-                    mortageCustomRangeBindingSource.DataSource = MortageOptions?.GetDefaultRanges();
+                    RefreshRangesList();
                 }
             }
         }
+
+        private void RefreshRangesList() =>
+            mortageOptionsCustomRangesListUserControl.SetData(MortageOptions?.GetDefaultRanges());
 
         public MortageOptionsUserControl()
         {
@@ -29,19 +42,19 @@
                 SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.ReadOnly = CalculationTypeImageComboBoxEdit.SelectedIndex != 1;
                 layoutControlGroupCustomRanges.CustomHeaderButtons[0].Properties.Enabled = CalculationTypeImageComboBoxEdit.SelectedIndex == 2;
                 MortageOptions.CalculationType = (CalculationTypeEnum)CalculationTypeImageComboBoxEdit.SelectedIndex;
-                mortageCustomRangeBindingSource.DataSource = MortageOptions?.GetDefaultRanges();
+                RefreshRangesList();
             };
             NumberOfPeriodsTextEdit.EditValueChanged += (s, e) =>
             {
-                mortageCustomRangeBindingSource.DataSource = MortageOptions?.GetDefaultRanges();
+                RefreshRangesList();
             };
             textEditEuribor12M.EditValueChanged += (s, e) =>
             {
-                mortageCustomRangeBindingSource.DataSource = MortageOptions?.GetDefaultRanges();
+                RefreshRangesList();
             };
             textEditDifferentialRate.EditValueChanged += (s, e) =>
             {
-                mortageCustomRangeBindingSource.DataSource = MortageOptions?.GetDefaultRanges();
+                RefreshRangesList();
             };
         }
     }

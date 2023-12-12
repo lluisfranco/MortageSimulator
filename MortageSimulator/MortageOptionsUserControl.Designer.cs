@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MortageOptionsUserControl));
             dataLayoutControl = new DevExpress.XtraDataLayout.DataLayoutControl();
-            gridControlPeriods = new DevExpress.XtraGrid.GridControl();
-            mortageCustomRangeBindingSource = new BindingSource(components);
-            gridViewPeriods = new DevExpress.XtraGrid.Views.Grid.GridView();
-            colNumberOfPeriods = new DevExpress.XtraGrid.Columns.GridColumn();
-            colTypeOfInterest = new DevExpress.XtraGrid.Columns.GridColumn();
+            mortageOptionsCustomRangesListUserControl = new MortageOptionsCustomRangesListUserControl();
             textEditDifferentialRate = new DevExpress.XtraEditors.TextEdit();
             mortageOptionsBindingSource = new BindingSource(components);
             textEditEuribor12M = new DevExpress.XtraEditors.TextEdit();
@@ -62,13 +64,11 @@
             ItemForSuperHipotecaMixta2To5YearTypeOfInterest = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlGroupCustomRanges = new DevExpress.XtraLayout.LayoutControlGroup();
-            layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(components);
             ((System.ComponentModel.ISupportInitialize)dataLayoutControl).BeginInit();
             dataLayoutControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gridControlPeriods).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)mortageCustomRangeBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridViewPeriods).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEditDifferentialRate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mortageOptionsBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)textEditEuribor12M.Properties).BeginInit();
@@ -95,13 +95,14 @@
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta2To5YearTypeOfInterest).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroupCustomRanges).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dxValidationProvider).BeginInit();
             SuspendLayout();
             // 
             // dataLayoutControl
             // 
-            dataLayoutControl.Controls.Add(gridControlPeriods);
+            dataLayoutControl.Controls.Add(mortageOptionsCustomRangesListUserControl);
             dataLayoutControl.Controls.Add(textEditDifferentialRate);
             dataLayoutControl.Controls.Add(textEditEuribor12M);
             dataLayoutControl.Controls.Add(SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit);
@@ -121,41 +122,12 @@
             dataLayoutControl.TabIndex = 0;
             dataLayoutControl.Text = "dataLayoutControl1";
             // 
-            // gridControlPeriods
+            // mortageOptionsCustomRangesListUserControl
             // 
-            gridControlPeriods.DataSource = mortageCustomRangeBindingSource;
-            gridControlPeriods.Location = new Point(24, 515);
-            gridControlPeriods.MainView = gridViewPeriods;
-            gridControlPeriods.Name = "gridControlPeriods";
-            gridControlPeriods.Size = new Size(386, 176);
-            gridControlPeriods.TabIndex = 11;
-            gridControlPeriods.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridViewPeriods });
-            // 
-            // mortageCustomRangeBindingSource
-            // 
-            mortageCustomRangeBindingSource.DataSource = typeof(MortageCustomRange);
-            // 
-            // gridViewPeriods
-            // 
-            gridViewPeriods.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colNumberOfPeriods, colTypeOfInterest });
-            gridViewPeriods.GridControl = gridControlPeriods;
-            gridViewPeriods.Name = "gridViewPeriods";
-            gridViewPeriods.OptionsBehavior.Editable = false;
-            gridViewPeriods.OptionsView.ShowGroupPanel = false;
-            // 
-            // colNumberOfPeriods
-            // 
-            colNumberOfPeriods.FieldName = "NumberOfPeriods";
-            colNumberOfPeriods.Name = "colNumberOfPeriods";
-            colNumberOfPeriods.Visible = true;
-            colNumberOfPeriods.VisibleIndex = 0;
-            // 
-            // colTypeOfInterest
-            // 
-            colTypeOfInterest.FieldName = "TypeOfInterest";
-            colTypeOfInterest.Name = "colTypeOfInterest";
-            colTypeOfInterest.Visible = true;
-            colTypeOfInterest.VisibleIndex = 1;
+            mortageOptionsCustomRangesListUserControl.Location = new Point(24, 515);
+            mortageOptionsCustomRangesListUserControl.Name = "mortageOptionsCustomRangesListUserControl";
+            mortageOptionsCustomRangesListUserControl.Size = new Size(386, 176);
+            mortageOptionsCustomRangesListUserControl.TabIndex = 12;
             // 
             // textEditDifferentialRate
             // 
@@ -171,6 +143,10 @@
             textEditDifferentialRate.Size = new Size(386, 34);
             textEditDifferentialRate.StyleController = dataLayoutControl;
             textEditDifferentialRate.TabIndex = 5;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule1.ErrorText = "Must be greater than zero";
+            conditionValidationRule1.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(textEditDifferentialRate, conditionValidationRule1);
             // 
             // mortageOptionsBindingSource
             // 
@@ -190,6 +166,10 @@
             textEditEuribor12M.Size = new Size(386, 34);
             textEditEuribor12M.StyleController = dataLayoutControl;
             textEditEuribor12M.TabIndex = 4;
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule2.ErrorText = "Must be greater than zero";
+            conditionValidationRule2.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(textEditEuribor12M, conditionValidationRule2);
             // 
             // SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit
             // 
@@ -237,6 +217,10 @@
             InitialCapitalTextEdit.Size = new Size(386, 34);
             InitialCapitalTextEdit.StyleController = dataLayoutControl;
             InitialCapitalTextEdit.TabIndex = 0;
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule3.ErrorText = "Must be greater than zero";
+            conditionValidationRule3.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(InitialCapitalTextEdit, conditionValidationRule3);
             // 
             // FirstPeriodDateDateEdit
             // 
@@ -265,6 +249,10 @@
             NumberOfPeriodsTextEdit.Size = new Size(386, 34);
             NumberOfPeriodsTextEdit.StyleController = dataLayoutControl;
             NumberOfPeriodsTextEdit.TabIndex = 3;
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule4.ErrorText = "Must be greater than zero";
+            conditionValidationRule4.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(NumberOfPeriodsTextEdit, conditionValidationRule4);
             // 
             // CalculationTypeImageComboBoxEdit
             // 
@@ -294,6 +282,10 @@
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Size = new Size(386, 34);
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.StyleController = dataLayoutControl;
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.TabIndex = 8;
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule5.ErrorText = "Must be greater than zero";
+            conditionValidationRule5.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(SuperHipotecaMixta1YearTypeOfInterestTextEdit, conditionValidationRule5);
             // 
             // SuperHipotecaMixta2To5YearTypeOfInterestTextEdit
             // 
@@ -309,6 +301,10 @@
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Size = new Size(386, 34);
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.StyleController = dataLayoutControl;
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.TabIndex = 9;
+            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule6.ErrorText = "Must be greater than zero";
+            conditionValidationRule6.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(SuperHipotecaMixta2To5YearTypeOfInterestTextEdit, conditionValidationRule6);
             // 
             // Root
             // 
@@ -433,24 +429,24 @@
             // 
             // layoutControlGroupCustomRanges
             // 
-            buttonImageOptions2.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("buttonImageOptions2.SvgImage");
-            buttonImageOptions2.SvgImageSize = new Size(12, 12);
-            layoutControlGroupCustomRanges.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] { new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Edit", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Edit custom periods", -1, false, null, true, false, true, null, -1) });
+            buttonImageOptions1.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("buttonImageOptions1.SvgImage");
+            buttonImageOptions1.SvgImageSize = new Size(12, 12);
+            layoutControlGroupCustomRanges.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] { new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Edit", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "Edit custom periods", -1, false, null, true, false, true, null, -1) });
             layoutControlGroupCustomRanges.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
-            layoutControlGroupCustomRanges.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem6 });
+            layoutControlGroupCustomRanges.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem7 });
             layoutControlGroupCustomRanges.Location = new Point(0, 470);
             layoutControlGroupCustomRanges.Name = "layoutControlGroupCustomRanges";
             layoutControlGroupCustomRanges.Size = new Size(414, 225);
             layoutControlGroupCustomRanges.Text = "CUSTOM RANGES";
             // 
-            // layoutControlItem6
+            // layoutControlItem7
             // 
-            layoutControlItem6.Control = gridControlPeriods;
-            layoutControlItem6.Location = new Point(0, 0);
-            layoutControlItem6.Name = "layoutControlItem6";
-            layoutControlItem6.Size = new Size(390, 180);
-            layoutControlItem6.TextSize = new Size(0, 0);
-            layoutControlItem6.TextVisible = false;
+            layoutControlItem7.Control = mortageOptionsCustomRangesListUserControl;
+            layoutControlItem7.Location = new Point(0, 0);
+            layoutControlItem7.Name = "layoutControlItem7";
+            layoutControlItem7.Size = new Size(390, 180);
+            layoutControlItem7.TextSize = new Size(0, 0);
+            layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem2
             // 
@@ -470,9 +466,6 @@
             Size = new Size(434, 715);
             ((System.ComponentModel.ISupportInitialize)dataLayoutControl).EndInit();
             dataLayoutControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gridControlPeriods).EndInit();
-            ((System.ComponentModel.ISupportInitialize)mortageCustomRangeBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridViewPeriods).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEditDifferentialRate.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)mortageOptionsBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)textEditEuribor12M.Properties).EndInit();
@@ -499,8 +492,9 @@
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta2To5YearTypeOfInterest).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem3).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroupCustomRanges).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dxValidationProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -533,11 +527,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupCustomRanges;
-        private DevExpress.XtraGrid.GridControl gridControlPeriods;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewPeriods;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private BindingSource mortageCustomRangeBindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colNumberOfPeriods;
-        private DevExpress.XtraGrid.Columns.GridColumn colTypeOfInterest;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider;
+        private MortageOptionsCustomRangesListUserControl mortageOptionsCustomRangesListUserControl;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }

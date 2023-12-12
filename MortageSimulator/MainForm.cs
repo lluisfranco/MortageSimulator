@@ -41,10 +41,18 @@ namespace MortageSimulator
             };
             barButtonItemCalculate.ItemClick += (s, e) =>
             {
-                var mortageService = new MortageService(mortageOptionsUserControl.MortageOptions);
-                var periods = mortageService.Calculate();
-                bindingSource.DataSource = periods;
-                gridView.RefreshData();
+                try
+                {
+                    if (!mortageOptionsUserControl.ValidateData()) return;
+                    var mortageService = new MortageService(mortageOptionsUserControl.MortageOptions);
+                    var periods = mortageService.Calculate();
+                    bindingSource.DataSource = periods;
+                    gridView.RefreshData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             };
             barButtonItemExportToExcel.ItemClick += (s, e) =>
             {
