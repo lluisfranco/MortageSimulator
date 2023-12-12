@@ -2,6 +2,7 @@
 
 namespace MortageSimulator
 {
+
     public class FileHelper
     {
         public static void SaveToFile(MortageOptions options, string extension = "msf")

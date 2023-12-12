@@ -47,9 +47,13 @@
             barButtonItemExportToExcel = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemOpen = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
+            skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            skinPaletteRibbonGalleryBarItem = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            barCheckItemCompactUI = new DevExpress.XtraBars.BarCheckItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroupTheme = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             gridControl = new DevExpress.XtraGrid.GridControl();
             bindingSource = new BindingSource(components);
             gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -105,12 +109,12 @@
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI });
             ribbon.Location = new Point(0, 0);
-            ribbon.MaxItemId = 7;
+            ribbon.MaxItemId = 11;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
-            ribbon.Size = new Size(1112, 158);
+            ribbon.Size = new Size(1112, 170);
             // 
             // barButtonItemParseDefaultFile
             // 
@@ -155,9 +159,30 @@
             barButtonItemSave.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSave.ImageOptions.SvgImage");
             barButtonItemSave.Name = "barButtonItemSave";
             // 
+            // skinRibbonGalleryBarItem
+            // 
+            skinRibbonGalleryBarItem.Caption = "skinRibbonGalleryBarItem1";
+            skinRibbonGalleryBarItem.Id = 8;
+            skinRibbonGalleryBarItem.Name = "skinRibbonGalleryBarItem";
+            // 
+            // skinPaletteRibbonGalleryBarItem
+            // 
+            skinPaletteRibbonGalleryBarItem.Caption = "skinPaletteRibbonGalleryBarItem1";
+            skinPaletteRibbonGalleryBarItem.Id = 9;
+            skinPaletteRibbonGalleryBarItem.Name = "skinPaletteRibbonGalleryBarItem";
+            // 
+            // barCheckItemCompactUI
+            // 
+            barCheckItemCompactUI.BindableChecked = true;
+            barCheckItemCompactUI.Caption = "Compact UI";
+            barCheckItemCompactUI.Checked = true;
+            barCheckItemCompactUI.Id = 10;
+            barCheckItemCompactUI.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barCheckItemCompactUI.ImageOptions.SvgImage");
+            barCheckItemCompactUI.Name = "barCheckItemCompactUI";
+            // 
             // ribbonPage1
             // 
-            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2 });
+            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroupTheme });
             ribbonPage1.Name = "ribbonPage1";
             ribbonPage1.Text = "GENERAL";
             // 
@@ -177,15 +202,23 @@
             ribbonPageGroup2.Name = "ribbonPageGroup2";
             ribbonPageGroup2.Text = "Extensions";
             // 
+            // ribbonPageGroupTheme
+            // 
+            ribbonPageGroupTheme.ItemLinks.Add(skinRibbonGalleryBarItem);
+            ribbonPageGroupTheme.ItemLinks.Add(skinPaletteRibbonGalleryBarItem);
+            ribbonPageGroupTheme.ItemLinks.Add(barCheckItemCompactUI);
+            ribbonPageGroupTheme.Name = "ribbonPageGroupTheme";
+            ribbonPageGroupTheme.Text = "Theme";
+            // 
             // gridControl
             // 
             gridControl.DataSource = bindingSource;
             gridControl.Dock = DockStyle.Fill;
-            gridControl.Location = new Point(325, 158);
+            gridControl.Location = new Point(325, 170);
             gridControl.MainView = gridView;
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new Size(787, 682);
+            gridControl.Size = new Size(787, 670);
             gridControl.TabIndex = 3;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
             // 
@@ -279,18 +312,18 @@
             dockPanel1.Controls.Add(dockPanel1_Container);
             dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             dockPanel1.ID = new Guid("567f80b2-92d7-467a-8caf-207bde63914e");
-            dockPanel1.Location = new Point(0, 158);
+            dockPanel1.Location = new Point(0, 170);
             dockPanel1.Name = "dockPanel1";
             dockPanel1.OriginalSize = new Size(325, 200);
-            dockPanel1.Size = new Size(325, 682);
+            dockPanel1.Size = new Size(325, 670);
             dockPanel1.Text = "Mortage Options";
             // 
             // dockPanel1_Container
             // 
             dockPanel1_Container.Controls.Add(mortageOptionsUserControl);
-            dockPanel1_Container.Location = new Point(3, 26);
+            dockPanel1_Container.Location = new Point(3, 31);
             dockPanel1_Container.Name = "dockPanel1_Container";
-            dockPanel1_Container.Size = new Size(318, 653);
+            dockPanel1_Container.Size = new Size(318, 636);
             dockPanel1_Container.TabIndex = 0;
             // 
             // mortageOptionsUserControl
@@ -307,7 +340,7 @@
             mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
             mortageOptionsUserControl.MortageOptions = mortageOptions1;
             mortageOptionsUserControl.Name = "mortageOptionsUserControl";
-            mortageOptionsUserControl.Size = new Size(318, 653);
+            mortageOptionsUserControl.Size = new Size(318, 636);
             mortageOptionsUserControl.TabIndex = 0;
             // 
             // MainForm
@@ -362,5 +395,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraGrid.Columns.GridColumn colRangeId;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupTheme;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemCompactUI;
     }
 }
