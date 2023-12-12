@@ -63,6 +63,11 @@ namespace MortageSimulator
                 if (MortageOptions != null)
                     Comparer.Simulations.Add(MortageOptions);
             };
+            barButtonItemCompare.ItemClick += (s, e) =>
+            {
+                if (Comparer.Simulations.Count == 0) return;
+                var results = Comparer.Compare();
+            };
             barButtonItemExportToExcel.ItemClick += (s, e) =>
             {
                 var file = Path.GetTempFileName().Replace("tmp", "xlsx");

@@ -50,8 +50,10 @@
             skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             skinPaletteRibbonGalleryBarItem = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             barCheckItemCompactUI = new DevExpress.XtraBars.BarCheckItem();
+            barButtonItemAddToComparer = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroupTheme = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             gridControl = new DevExpress.XtraGrid.GridControl();
@@ -67,8 +69,7 @@
             dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             mortageOptionsUserControl = new MortageOptionsUserControl();
-            ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            barButtonItemAddToComparer = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemCompare = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
@@ -111,9 +112,9 @@
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI, barButtonItemAddToComparer });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI, barButtonItemAddToComparer, barButtonItemCompare });
             ribbon.Location = new Point(0, 0);
-            ribbon.MaxItemId = 12;
+            ribbon.MaxItemId = 13;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
             ribbon.Size = new Size(1112, 158);
@@ -182,6 +183,13 @@
             barCheckItemCompactUI.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barCheckItemCompactUI.ImageOptions.SvgImage");
             barCheckItemCompactUI.Name = "barCheckItemCompactUI";
             // 
+            // barButtonItemAddToComparer
+            // 
+            barButtonItemAddToComparer.Caption = "Add Simulation To Comparer";
+            barButtonItemAddToComparer.Id = 11;
+            barButtonItemAddToComparer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemAddToComparer.ImageOptions.SvgImage");
+            barButtonItemAddToComparer.Name = "barButtonItemAddToComparer";
+            // 
             // ribbonPage1
             // 
             ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup3, ribbonPageGroup2, ribbonPageGroupTheme });
@@ -196,6 +204,13 @@
             ribbonPageGroup1.ItemLinks.Add(barButtonItemExportToExcel, true);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
             ribbonPageGroup1.Text = "Options";
+            // 
+            // ribbonPageGroup3
+            // 
+            ribbonPageGroup3.ItemLinks.Add(barButtonItemAddToComparer);
+            ribbonPageGroup3.ItemLinks.Add(barButtonItemCompare);
+            ribbonPageGroup3.Name = "ribbonPageGroup3";
+            ribbonPageGroup3.Text = "Comparer";
             // 
             // ribbonPageGroup2
             // 
@@ -337,6 +352,7 @@
             mortageOptions1.Euribor12MRate = 0D;
             mortageOptions1.FirstPeriodDate = new DateTime(0L);
             mortageOptions1.InitialCapital = 0D;
+            mortageOptions1.Name = null;
             mortageOptions1.NumberOfPeriods = 0;
             mortageOptions1.SuperHipotecaMixta1YearTypeOfInterest = 0D;
             mortageOptions1.SuperHipotecaMixta2To5YearTypeOfInterest = 0D;
@@ -345,18 +361,12 @@
             mortageOptionsUserControl.Size = new Size(318, 653);
             mortageOptionsUserControl.TabIndex = 0;
             // 
-            // ribbonPageGroup3
+            // barButtonItemCompare
             // 
-            ribbonPageGroup3.ItemLinks.Add(barButtonItemAddToComparer);
-            ribbonPageGroup3.Name = "ribbonPageGroup3";
-            ribbonPageGroup3.Text = "Comparer";
-            // 
-            // barButtonItemAddToComparer
-            // 
-            barButtonItemAddToComparer.Caption = "Add Simulation To Comparer";
-            barButtonItemAddToComparer.Id = 11;
-            barButtonItemAddToComparer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemAddToComparer.ImageOptions.SvgImage");
-            barButtonItemAddToComparer.Name = "barButtonItemAddToComparer";
+            barButtonItemCompare.Caption = "Compare...";
+            barButtonItemCompare.Id = 12;
+            barButtonItemCompare.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemCompare.ImageOptions.SvgImage");
+            barButtonItemCompare.Name = "barButtonItemCompare";
             // 
             // MainForm
             // 
@@ -416,5 +426,6 @@
         private DevExpress.XtraBars.BarCheckItem barCheckItemCompactUI;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddToComparer;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCompare;
     }
 }
