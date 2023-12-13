@@ -4,8 +4,15 @@
     {
         public bool ReadOnly
         {
-            get => !gridView.OptionsBehavior.Editable;
-            set => gridView.OptionsBehavior.Editable = !value;
+            get
+            {
+                return !gridView.OptionsBehavior.Editable;
+            }
+            set
+            {
+                gridView.OptionsBehavior.Editable = !value;
+                gridControl.UseEmbeddedNavigator = !value;
+            }
         }
 
         public MortageOptionsCustomRangesListUserControl()

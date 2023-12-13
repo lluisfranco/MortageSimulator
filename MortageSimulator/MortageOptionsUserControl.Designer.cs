@@ -34,7 +34,6 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule6 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MortageOptionsUserControl));
             dataLayoutControl = new DevExpress.XtraDataLayout.DataLayoutControl();
@@ -53,11 +52,11 @@
             Root = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             ItemForInitialCapital = new DevExpress.XtraLayout.LayoutControlItem();
-            ItemForFirstPeriodDate = new DevExpress.XtraLayout.LayoutControlItem();
-            ItemForNumberOfPeriods = new DevExpress.XtraLayout.LayoutControlItem();
-            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            ItemForFirstPeriodDate = new DevExpress.XtraLayout.LayoutControlItem();
+            ItemForNumberOfPeriods = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             ItemForCalculationType = new DevExpress.XtraLayout.LayoutControlItem();
             ItemForSuperHipotecaMixta1YearTypeOfInterest = new DevExpress.XtraLayout.LayoutControlItem();
@@ -84,11 +83,11 @@
             ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ItemForInitialCapital).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ItemForFirstPeriodDate).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ItemForNumberOfPeriods).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ItemForFirstPeriodDate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ItemForNumberOfPeriods).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ItemForCalculationType).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta1YearTypeOfInterest).BeginInit();
@@ -126,8 +125,9 @@
             // 
             mortageOptionsCustomRangesListUserControl.Location = new Point(24, 515);
             mortageOptionsCustomRangesListUserControl.Name = "mortageOptionsCustomRangesListUserControl";
+            mortageOptionsCustomRangesListUserControl.ReadOnly = true;
             mortageOptionsCustomRangesListUserControl.Size = new Size(386, 176);
-            mortageOptionsCustomRangesListUserControl.TabIndex = 12;
+            mortageOptionsCustomRangesListUserControl.TabIndex = 11;
             // 
             // textEditDifferentialRate
             // 
@@ -143,10 +143,6 @@
             textEditDifferentialRate.Size = new Size(386, 34);
             textEditDifferentialRate.StyleController = dataLayoutControl;
             textEditDifferentialRate.TabIndex = 5;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
-            conditionValidationRule1.ErrorText = "Must be greater than zero";
-            conditionValidationRule1.Value1 = 0D;
-            dxValidationProvider.SetValidationRule(textEditDifferentialRate, conditionValidationRule1);
             // 
             // mortageOptionsBindingSource
             // 
@@ -166,17 +162,17 @@
             textEditEuribor12M.Size = new Size(386, 34);
             textEditEuribor12M.StyleController = dataLayoutControl;
             textEditEuribor12M.TabIndex = 4;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
-            conditionValidationRule2.ErrorText = "Must be greater than zero";
-            conditionValidationRule2.Value1 = 0D;
-            dxValidationProvider.SetValidationRule(textEditEuribor12M, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule1.ErrorText = "Must be greater than zero";
+            conditionValidationRule1.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(textEditEuribor12M, conditionValidationRule1);
             // 
             // SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit
             // 
             SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "SuperHipotecaMixtaAfter5YearTypeOfInterest", true));
             SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Location = new Point(24, 432);
             SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Name = "SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit";
-            SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Properties.AdvancedModeOptions.Label = "Super Hipoteca Mixta Type Of Interest (Euribor + 0.5%)";
+            SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Properties.AdvancedModeOptions.Label = "After 5th Year Rate (Euribor + 0.5%)";
             SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             SuperHipotecaMixtaAfter5YearTypeOfInterestTextEdit.Properties.MaskSettings.Set("mask", "n2");
@@ -192,7 +188,7 @@
             textEditTypeOfInterest.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "TypeOfInterest", true));
             textEditTypeOfInterest.Location = new Point(24, 235);
             textEditTypeOfInterest.Name = "textEditTypeOfInterest";
-            textEditTypeOfInterest.Properties.AdvancedModeOptions.Label = "Type Of Interest (Euribor 12M + Differential Rate)";
+            textEditTypeOfInterest.Properties.AdvancedModeOptions.Label = "Interest (Euribor 12M + Diff. Rate)";
             textEditTypeOfInterest.Properties.Mask.UseMaskAsDisplayFormat = true;
             textEditTypeOfInterest.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             textEditTypeOfInterest.Properties.MaskSettings.Set("mask", "n2");
@@ -217,16 +213,16 @@
             InitialCapitalTextEdit.Size = new Size(386, 34);
             InitialCapitalTextEdit.StyleController = dataLayoutControl;
             InitialCapitalTextEdit.TabIndex = 0;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
-            conditionValidationRule3.ErrorText = "Must be greater than zero";
-            conditionValidationRule3.Value1 = 0D;
-            dxValidationProvider.SetValidationRule(InitialCapitalTextEdit, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule2.ErrorText = "Must be greater than zero";
+            conditionValidationRule2.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(InitialCapitalTextEdit, conditionValidationRule2);
             // 
             // FirstPeriodDateDateEdit
             // 
             FirstPeriodDateDateEdit.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "FirstPeriodDate", true));
             FirstPeriodDateDateEdit.EditValue = null;
-            FirstPeriodDateDateEdit.Location = new Point(24, 83);
+            FirstPeriodDateDateEdit.Location = new Point(24, 121);
             FirstPeriodDateDateEdit.Name = "FirstPeriodDateDateEdit";
             FirstPeriodDateDateEdit.Properties.AdvancedModeOptions.Label = "First Payment Date";
             FirstPeriodDateDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -239,7 +235,7 @@
             // NumberOfPeriodsTextEdit
             // 
             NumberOfPeriodsTextEdit.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "NumberOfPeriods", true));
-            NumberOfPeriodsTextEdit.Location = new Point(24, 121);
+            NumberOfPeriodsTextEdit.Location = new Point(24, 83);
             NumberOfPeriodsTextEdit.Name = "NumberOfPeriodsTextEdit";
             NumberOfPeriodsTextEdit.Properties.AdvancedModeOptions.Label = "Number Of Periods";
             NumberOfPeriodsTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
@@ -249,10 +245,10 @@
             NumberOfPeriodsTextEdit.Size = new Size(386, 34);
             NumberOfPeriodsTextEdit.StyleController = dataLayoutControl;
             NumberOfPeriodsTextEdit.TabIndex = 3;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
-            conditionValidationRule4.ErrorText = "Must be greater than zero";
-            conditionValidationRule4.Value1 = 0D;
-            dxValidationProvider.SetValidationRule(NumberOfPeriodsTextEdit, conditionValidationRule4);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule3.ErrorText = "Must be greater than zero";
+            conditionValidationRule3.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(NumberOfPeriodsTextEdit, conditionValidationRule3);
             // 
             // CalculationTypeImageComboBoxEdit
             // 
@@ -273,7 +269,7 @@
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "SuperHipotecaMixta1YearTypeOfInterest", true));
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Location = new Point(24, 356);
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Name = "SuperHipotecaMixta1YearTypeOfInterestTextEdit";
-            SuperHipotecaMixta1YearTypeOfInterestTextEdit.Properties.AdvancedModeOptions.Label = "Super Hipoteca Mixta 1st Year Type Of Interest";
+            SuperHipotecaMixta1YearTypeOfInterestTextEdit.Properties.AdvancedModeOptions.Label = "1st Year Rate";
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Properties.MaskSettings.Set("mask", "F");
@@ -282,17 +278,17 @@
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.Size = new Size(386, 34);
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.StyleController = dataLayoutControl;
             SuperHipotecaMixta1YearTypeOfInterestTextEdit.TabIndex = 8;
-            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
-            conditionValidationRule5.ErrorText = "Must be greater than zero";
-            conditionValidationRule5.Value1 = 0D;
-            dxValidationProvider.SetValidationRule(SuperHipotecaMixta1YearTypeOfInterestTextEdit, conditionValidationRule5);
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule4.ErrorText = "Must be greater than zero";
+            conditionValidationRule4.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(SuperHipotecaMixta1YearTypeOfInterestTextEdit, conditionValidationRule4);
             // 
             // SuperHipotecaMixta2To5YearTypeOfInterestTextEdit
             // 
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.DataBindings.Add(new Binding("EditValue", mortageOptionsBindingSource, "SuperHipotecaMixta2To5YearTypeOfInterest", true));
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Location = new Point(24, 394);
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Name = "SuperHipotecaMixta2To5YearTypeOfInterestTextEdit";
-            SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Properties.AdvancedModeOptions.Label = "Super Hipoteca Mixta 2nd to 5th Year Type Of Interest";
+            SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Properties.AdvancedModeOptions.Label = "2nd to 5th Year Rate";
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Properties.MaskSettings.Set("mask", "F");
@@ -301,10 +297,10 @@
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.Size = new Size(386, 34);
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.StyleController = dataLayoutControl;
             SuperHipotecaMixta2To5YearTypeOfInterestTextEdit.TabIndex = 9;
-            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
-            conditionValidationRule6.ErrorText = "Must be greater than zero";
-            conditionValidationRule6.Value1 = 0D;
-            dxValidationProvider.SetValidationRule(SuperHipotecaMixta2To5YearTypeOfInterestTextEdit, conditionValidationRule6);
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.Greater;
+            conditionValidationRule5.ErrorText = "Must be greater than zero";
+            conditionValidationRule5.Value1 = 0D;
+            dxValidationProvider.SetValidationRule(SuperHipotecaMixta2To5YearTypeOfInterestTextEdit, conditionValidationRule5);
             // 
             // Root
             // 
@@ -317,7 +313,7 @@
             // 
             // layoutControlGroup2
             // 
-            layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { ItemForInitialCapital, ItemForFirstPeriodDate, ItemForNumberOfPeriods, layoutControlItem1, layoutControlItem4, layoutControlItem5 });
+            layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { ItemForInitialCapital, layoutControlItem4, ItemForFirstPeriodDate, ItemForNumberOfPeriods, layoutControlItem5, layoutControlItem1 });
             layoutControlGroup2.Location = new Point(0, 0);
             layoutControlGroup2.Name = "layoutControlGroup2";
             layoutControlGroup2.Size = new Size(414, 273);
@@ -332,35 +328,6 @@
             ItemForInitialCapital.Text = "Initial Capital";
             ItemForInitialCapital.TextSize = new Size(0, 0);
             ItemForInitialCapital.TextVisible = false;
-            // 
-            // ItemForFirstPeriodDate
-            // 
-            ItemForFirstPeriodDate.Control = FirstPeriodDateDateEdit;
-            ItemForFirstPeriodDate.Location = new Point(0, 38);
-            ItemForFirstPeriodDate.Name = "ItemForFirstPeriodDate";
-            ItemForFirstPeriodDate.Size = new Size(390, 38);
-            ItemForFirstPeriodDate.Text = "First Period Date";
-            ItemForFirstPeriodDate.TextSize = new Size(0, 0);
-            ItemForFirstPeriodDate.TextVisible = false;
-            // 
-            // ItemForNumberOfPeriods
-            // 
-            ItemForNumberOfPeriods.Control = NumberOfPeriodsTextEdit;
-            ItemForNumberOfPeriods.Location = new Point(0, 76);
-            ItemForNumberOfPeriods.Name = "ItemForNumberOfPeriods";
-            ItemForNumberOfPeriods.Size = new Size(390, 38);
-            ItemForNumberOfPeriods.Text = "Number Of Periods";
-            ItemForNumberOfPeriods.TextSize = new Size(0, 0);
-            ItemForNumberOfPeriods.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            layoutControlItem1.Control = textEditTypeOfInterest;
-            layoutControlItem1.Location = new Point(0, 190);
-            layoutControlItem1.Name = "layoutControlItem1";
-            layoutControlItem1.Size = new Size(390, 38);
-            layoutControlItem1.TextSize = new Size(0, 0);
-            layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem4
             // 
@@ -379,6 +346,35 @@
             layoutControlItem5.Size = new Size(390, 38);
             layoutControlItem5.TextSize = new Size(0, 0);
             layoutControlItem5.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            layoutControlItem1.Control = textEditTypeOfInterest;
+            layoutControlItem1.Location = new Point(0, 190);
+            layoutControlItem1.Name = "layoutControlItem1";
+            layoutControlItem1.Size = new Size(390, 38);
+            layoutControlItem1.TextSize = new Size(0, 0);
+            layoutControlItem1.TextVisible = false;
+            // 
+            // ItemForFirstPeriodDate
+            // 
+            ItemForFirstPeriodDate.Control = FirstPeriodDateDateEdit;
+            ItemForFirstPeriodDate.Location = new Point(0, 76);
+            ItemForFirstPeriodDate.Name = "ItemForFirstPeriodDate";
+            ItemForFirstPeriodDate.Size = new Size(390, 38);
+            ItemForFirstPeriodDate.Text = "First Period Date";
+            ItemForFirstPeriodDate.TextSize = new Size(0, 0);
+            ItemForFirstPeriodDate.TextVisible = false;
+            // 
+            // ItemForNumberOfPeriods
+            // 
+            ItemForNumberOfPeriods.Control = NumberOfPeriodsTextEdit;
+            ItemForNumberOfPeriods.Location = new Point(0, 38);
+            ItemForNumberOfPeriods.Name = "ItemForNumberOfPeriods";
+            ItemForNumberOfPeriods.Size = new Size(390, 38);
+            ItemForNumberOfPeriods.Text = "Number Of Periods";
+            ItemForNumberOfPeriods.TextSize = new Size(0, 0);
+            ItemForNumberOfPeriods.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
@@ -481,11 +477,11 @@
             ((System.ComponentModel.ISupportInitialize)Root).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup2).EndInit();
             ((System.ComponentModel.ISupportInitialize)ItemForInitialCapital).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ItemForFirstPeriodDate).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ItemForNumberOfPeriods).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem4).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ItemForFirstPeriodDate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ItemForNumberOfPeriods).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ItemForCalculationType).EndInit();
             ((System.ComponentModel.ISupportInitialize)ItemForSuperHipotecaMixta1YearTypeOfInterest).EndInit();
