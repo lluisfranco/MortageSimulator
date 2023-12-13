@@ -64,7 +64,14 @@ namespace MortageSimulator
             barButtonItemCompare.ItemClick += (s, e) =>
             {
                 if (Comparer.Simulations.Count == 0) return;
-                var results = Comparer.Compare();
+                comparerBindingSource.DataSource = Comparer.Compare();
+                tabPane1.SelectedPage = tabNavigationPageComparer;
+            };
+            barButtonItemClearSimulations.ItemClick += (s, e) =>
+            {
+                Comparer.Simulations.Clear();
+                comparerBindingSource.DataSource = Comparer.Compare();
+                tabPane1.SelectedPage = tabNavigationPageComparer;
             };
             barButtonItemExportToExcel.ItemClick += (s, e) =>
             {
@@ -103,11 +110,11 @@ namespace MortageSimulator
         {
             var mortageService = new MortageService(mortageOptionsUserControl.MortageOptions);
             var periods = mortageService.Calculate();
-            bindingSource.DataSource = periods;
+            simulationBindingSource.DataSource = periods;
             gridView.RefreshData();
         }
 
         private void CalculatePeriodsFromFile(string file) =>
-            bindingSource.DataSource = FileHelper.CalculatePeriodsFromFile(file);
+            simulationBindingSource.DataSource = FileHelper.CalculatePeriodsFromFile(file);
     }
 }

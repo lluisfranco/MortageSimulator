@@ -37,6 +37,14 @@
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding1 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding2 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding3 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding4 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding5 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding6 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding7 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
+            DevExpress.XtraPivotGrid.DataSourceColumnBinding dataSourceColumnBinding8 = new DevExpress.XtraPivotGrid.DataSourceColumnBinding();
             colPendingCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             colInterests = new DevExpress.XtraGrid.Columns.GridColumn();
             colAmortizedCapital = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,7 +65,7 @@
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroupTheme = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            bindingSource = new BindingSource(components);
+            simulationBindingSource = new BindingSource(components);
             dockManager = new DevExpress.XtraBars.Docking.DockManager(components);
             dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -73,8 +81,20 @@
             colInitialCapital = new DevExpress.XtraGrid.Columns.GridColumn();
             colRangeId = new DevExpress.XtraGrid.Columns.GridColumn();
             tabNavigationPageComparer = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            pivotGridControlComparer = new DevExpress.XtraPivotGrid.PivotGridControl();
+            comparerBindingSource = new BindingSource(components);
+            pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField2 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField3 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField4 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField5 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField6 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField7 = new DevExpress.XtraPivotGrid.PivotGridField();
+            pivotGridField8 = new DevExpress.XtraPivotGrid.PivotGridField();
+            barButtonItemComparerManager = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemClearSimulations = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)simulationBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dockManager).BeginInit();
             dockPanel1.SuspendLayout();
             dockPanel1_Container.SuspendLayout();
@@ -83,6 +103,9 @@
             tabNavigationPageSimulation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView).BeginInit();
+            tabNavigationPageComparer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pivotGridControlComparer).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)comparerBindingSource).BeginInit();
             SuspendLayout();
             // 
             // colPendingCapital
@@ -118,9 +141,9 @@
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI, barButtonItemAddToComparer, barButtonItemCompare });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, barButtonItemParseDefaultFile, barButtonItemCalculate, barButtonItemParseFile, barButtonItemExportToExcel, barButtonItemOpen, barButtonItemSave, skinRibbonGalleryBarItem, skinPaletteRibbonGalleryBarItem, barCheckItemCompactUI, barButtonItemAddToComparer, barButtonItemCompare, barButtonItemComparerManager, barButtonItemClearSimulations });
             ribbon.Location = new Point(0, 0);
-            ribbon.MaxItemId = 13;
+            ribbon.MaxItemId = 15;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPage1 });
             ribbon.Size = new Size(1112, 158);
@@ -222,6 +245,8 @@
             // 
             ribbonPageGroup3.ItemLinks.Add(barButtonItemAddToComparer);
             ribbonPageGroup3.ItemLinks.Add(barButtonItemCompare);
+            ribbonPageGroup3.ItemLinks.Add(barButtonItemComparerManager);
+            ribbonPageGroup3.ItemLinks.Add(barButtonItemClearSimulations);
             ribbonPageGroup3.Name = "ribbonPageGroup3";
             ribbonPageGroup3.Text = "Comparer";
             // 
@@ -240,9 +265,9 @@
             ribbonPageGroupTheme.Name = "ribbonPageGroupTheme";
             ribbonPageGroupTheme.Text = "Theme";
             // 
-            // bindingSource
+            // simulationBindingSource
             // 
-            bindingSource.DataSource = typeof(MortagePeriod);
+            simulationBindingSource.DataSource = typeof(MortagePeriod);
             // 
             // dockManager
             // 
@@ -313,7 +338,7 @@
             // 
             // gridControl
             // 
-            gridControl.DataSource = bindingSource;
+            gridControl.DataSource = simulationBindingSource;
             gridControl.Dock = DockStyle.Fill;
             gridControl.Location = new Point(0, 0);
             gridControl.MainView = gridView;
@@ -402,10 +427,124 @@
             // tabNavigationPageComparer
             // 
             tabNavigationPageComparer.Caption = "COMPARER";
+            tabNavigationPageComparer.Controls.Add(pivotGridControlComparer);
             tabNavigationPageComparer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("tabNavigationPageComparer.ImageOptions.SvgImage");
             tabNavigationPageComparer.ImageOptions.SvgImageSize = new Size(16, 16);
             tabNavigationPageComparer.Name = "tabNavigationPageComparer";
             tabNavigationPageComparer.Size = new Size(787, 649);
+            // 
+            // pivotGridControlComparer
+            // 
+            pivotGridControlComparer.DataSource = comparerBindingSource;
+            pivotGridControlComparer.Dock = DockStyle.Fill;
+            pivotGridControlComparer.Fields.AddRange(new DevExpress.XtraPivotGrid.PivotGridField[] { pivotGridField1, pivotGridField2, pivotGridField3, pivotGridField4, pivotGridField5, pivotGridField6, pivotGridField7, pivotGridField8 });
+            pivotGridControlComparer.Location = new Point(0, 0);
+            pivotGridControlComparer.MenuManager = ribbon;
+            pivotGridControlComparer.Name = "pivotGridControlComparer";
+            pivotGridControlComparer.OptionsData.DataProcessingEngine = DevExpress.XtraPivotGrid.PivotDataProcessingEngine.Optimized;
+            pivotGridControlComparer.OptionsView.ShowColumnGrandTotals = false;
+            pivotGridControlComparer.OptionsView.ShowColumnTotals = false;
+            pivotGridControlComparer.Size = new Size(787, 649);
+            pivotGridControlComparer.TabIndex = 0;
+            // 
+            // comparerBindingSource
+            // 
+            comparerBindingSource.DataSource = typeof(MortageComparerResult);
+            // 
+            // pivotGridField1
+            // 
+            pivotGridField1.AreaIndex = 0;
+            pivotGridField1.Caption = "Id";
+            dataSourceColumnBinding1.ColumnName = "Id";
+            pivotGridField1.DataBinding = dataSourceColumnBinding1;
+            pivotGridField1.Name = "pivotGridField1";
+            pivotGridField1.Visible = false;
+            // 
+            // pivotGridField2
+            // 
+            pivotGridField2.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            pivotGridField2.AreaIndex = 0;
+            pivotGridField2.Caption = "Name";
+            dataSourceColumnBinding2.ColumnName = "Name";
+            pivotGridField2.DataBinding = dataSourceColumnBinding2;
+            pivotGridField2.Name = "pivotGridField2";
+            // 
+            // pivotGridField3
+            // 
+            pivotGridField3.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            pivotGridField3.AreaIndex = 0;
+            pivotGridField3.Caption = "Year";
+            dataSourceColumnBinding3.ColumnName = "Year";
+            pivotGridField3.DataBinding = dataSourceColumnBinding3;
+            pivotGridField3.Name = "pivotGridField3";
+            // 
+            // pivotGridField4
+            // 
+            pivotGridField4.AreaIndex = 0;
+            pivotGridField4.Caption = "Number Of Periods";
+            dataSourceColumnBinding4.ColumnName = "NumberOfPeriods";
+            pivotGridField4.DataBinding = dataSourceColumnBinding4;
+            pivotGridField4.Name = "pivotGridField4";
+            pivotGridField4.Visible = false;
+            // 
+            // pivotGridField5
+            // 
+            pivotGridField5.AreaIndex = 0;
+            pivotGridField5.Caption = "Average Type Of Interest";
+            pivotGridField5.CellFormat.FormatString = "n2";
+            pivotGridField5.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            dataSourceColumnBinding5.ColumnName = "AverageTypeOfInterest";
+            pivotGridField5.DataBinding = dataSourceColumnBinding5;
+            pivotGridField5.Name = "pivotGridField5";
+            // 
+            // pivotGridField6
+            // 
+            pivotGridField6.Appearance.Cell.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            pivotGridField6.Appearance.Cell.Options.UseFont = true;
+            pivotGridField6.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            pivotGridField6.AreaIndex = 2;
+            pivotGridField6.Caption = "Total Interests";
+            pivotGridField6.CellFormat.FormatString = "n0";
+            pivotGridField6.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            dataSourceColumnBinding6.ColumnName = "TotalInterests";
+            pivotGridField6.DataBinding = dataSourceColumnBinding6;
+            pivotGridField6.Name = "pivotGridField6";
+            // 
+            // pivotGridField7
+            // 
+            pivotGridField7.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            pivotGridField7.AreaIndex = 0;
+            pivotGridField7.Caption = "Total Fee To Pay";
+            pivotGridField7.CellFormat.FormatString = "n0";
+            pivotGridField7.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            dataSourceColumnBinding7.ColumnName = "TotalFeeToPay";
+            pivotGridField7.DataBinding = dataSourceColumnBinding7;
+            pivotGridField7.Name = "pivotGridField7";
+            // 
+            // pivotGridField8
+            // 
+            pivotGridField8.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            pivotGridField8.AreaIndex = 1;
+            pivotGridField8.Caption = "Total Amortized Capital";
+            pivotGridField8.CellFormat.FormatString = "n0";
+            pivotGridField8.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            dataSourceColumnBinding8.ColumnName = "TotalAmortizedCapital";
+            pivotGridField8.DataBinding = dataSourceColumnBinding8;
+            pivotGridField8.Name = "pivotGridField8";
+            // 
+            // barButtonItemComparerManager
+            // 
+            barButtonItemComparerManager.Caption = "Simulations List...";
+            barButtonItemComparerManager.Id = 13;
+            barButtonItemComparerManager.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemComparerManager.ImageOptions.SvgImage");
+            barButtonItemComparerManager.Name = "barButtonItemComparerManager";
+            // 
+            // barButtonItemClearSimulations
+            // 
+            barButtonItemClearSimulations.Caption = "Clear Simulations";
+            barButtonItemClearSimulations.Id = 14;
+            barButtonItemClearSimulations.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            barButtonItemClearSimulations.Name = "barButtonItemClearSimulations";
             // 
             // MainForm
             // 
@@ -421,7 +560,7 @@
             Text = "Mortage Simulator";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)ribbon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)simulationBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dockManager).EndInit();
             dockPanel1.ResumeLayout(false);
             dockPanel1_Container.ResumeLayout(false);
@@ -430,6 +569,9 @@
             tabNavigationPageSimulation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControl).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView).EndInit();
+            tabNavigationPageComparer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pivotGridControlComparer).EndInit();
+            ((System.ComponentModel.ISupportInitialize)comparerBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -440,7 +582,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemParseDefaultFile;
-        private BindingSource bindingSource;
+        private BindingSource simulationBindingSource;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCalculate;
         private DevExpress.XtraBars.Docking.DockManager dockManager;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
@@ -472,5 +614,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn colInitialCapital;
         private DevExpress.XtraGrid.Columns.GridColumn colRangeId;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageComparer;
+        private BindingSource comparerBindingSource;
+        private DevExpress.XtraPivotGrid.PivotGridControl pivotGridControlComparer;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField2;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField3;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField4;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField5;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField6;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField7;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemComparerManager;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemClearSimulations;
     }
 }
