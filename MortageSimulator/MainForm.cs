@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace MortageSimulator
 {
@@ -7,6 +6,8 @@ namespace MortageSimulator
     {
         public MortageOptions MortageOptions { get; private set; }
         public MortageComparer Comparer { get; private set; } = new();
+        public MainFormViewModel ViewModel { get; private set; } 
+        public bool IsSimulationTab => tabPane1.SelectedPage == tabNavigationPageSimulation;
 
         const string ORIGINAL_FILE = "HipotecaBM2023.txt";
         public MainForm()
@@ -14,6 +15,7 @@ namespace MortageSimulator
             InitializeComponent();
             DevExpressSkinHelper.SetTheme("WXI", "Default");
             DevExpressSkinHelper.SetCompactUI(true, barCheckItemCompactUI);
+            ViewModel = new(this);
             Text = string.Format($"{Application.ProductName} - " +
                 $"{Assembly.GetExecutingAssembly().GetName().Version}");
             Load += (s, e) =>
@@ -75,16 +77,10 @@ namespace MortageSimulator
             };
             barButtonItemExportToExcel.ItemClick += (s, e) =>
             {
-                var file = Path.GetTempFileName().Replace("tmp", "xlsx");
-                if (gridView.RowCount == 0) return;
-                gridView.ExportToXlsx(file);
-                var p = new Process
-                {
-                    StartInfo = new ProcessStartInfo(file)
-                    {
-                        UseShellExecute = true
-                    }
-                }.Start();
+                if (IsSimulationTab) 
+                    ViewModel.ExportToExcel(gridView);
+                else 
+                    ViewModel.ExportToExcel(pivotGridControlComparer);
             };
             barButtonItemParseDefaultFile.ItemClick += (s, e) =>
             {
@@ -114,7 +110,7 @@ namespace MortageSimulator
             gridView.RefreshData();
         }
 
-        private void CalculatePeriodsFromFile(string file) =>
+        public void CalculatePeriodsFromFile(string file) =>
             simulationBindingSource.DataSource = FileHelper.CalculatePeriodsFromFile(file);
     }
 }
